@@ -220,7 +220,7 @@ Sub13 BaselineSubtractor(.dataa(DATA_IN), .datab({1'b0,enabled_mean}),
 				3:	begin
 						fifo_data_in <= {1'b0, 1'b1, THRESHOLD_ADDRESS, data_minus_baseline[11:0]};
 						ThrAddr <= ThrAddr + 1;
-						if( active_channel & (data_minus_baseline > THRESHOLD_DATA) )
+						if( active_channel & (data_minus_baseline >= THRESHOLD_DATA) )
 						begin
 							fifo_out_wr <= 1;
 							word_count <= word_count + 1;

@@ -1,6 +1,6 @@
 Flow report for Fpga
-Tue Jan 14 09:45:42 2020
-Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+Wed May 20 16:49:16 2020
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
 
 
 ---------------------
@@ -37,29 +37,29 @@ applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------------+
-; Flow Summary                                                                      ;
-+--------------------------------+--------------------------------------------------+
-; Flow Status                    ; Successful - Tue Jan 14 09:45:08 2020            ;
-; Quartus II 64-Bit Version      ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
-; Revision Name                  ; Fpga                                             ;
-; Top-level Entity Name          ; Fpga                                             ;
-; Family                         ; Arria GX                                         ;
-; Device                         ; EP1AGX60DF780C6                                  ;
-; Timing Models                  ; Final                                            ;
-; Logic utilization              ; 70 %                                             ;
-;     Combinational ALUTs        ; 24,672 / 48,080 ( 51 % )                         ;
-;     Dedicated logic registers  ; 19,569 / 48,080 ( 41 % )                         ;
-; Total registers                ; 19846                                            ;
-; Total pins                     ; 312 / 395 ( 79 % )                               ;
-; Total virtual pins             ; 0                                                ;
-; Total block memory bits        ; 1,755,244 / 2,528,640 ( 69 % )                   ;
-; DSP block 9-bit elements       ; 240 / 256 ( 94 % )                               ;
-; Total GXB Receiver Channels    ; 1 / 8 ( 13 % )                                   ;
-; Total GXB Transmitter Channels ; 1 / 8 ( 13 % )                                   ;
-; Total PLLs                     ; 3 / 4 ( 75 % )                                   ;
-; Total DLLs                     ; 1 / 2 ( 50 % )                                   ;
-+--------------------------------+--------------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Flow Summary                                                                         ;
++--------------------------------+-----------------------------------------------------+
+; Flow Status                    ; Successful - Wed May 20 16:48:19 2020               ;
+; Quartus II 64-Bit Version      ; 13.0.1 Build 232 06/12/2013 SP 1.78 SJ Full Version ;
+; Revision Name                  ; Fpga                                                ;
+; Top-level Entity Name          ; Fpga                                                ;
+; Family                         ; Arria GX                                            ;
+; Device                         ; EP1AGX60DF780C6                                     ;
+; Timing Models                  ; Final                                               ;
+; Logic utilization              ; 70 %                                                ;
+;     Combinational ALUTs        ; 24,712 / 48,080 ( 51 % )                            ;
+;     Dedicated logic registers  ; 19,530 / 48,080 ( 41 % )                            ;
+; Total registers                ; 19807                                               ;
+; Total pins                     ; 312 / 395 ( 79 % )                                  ;
+; Total virtual pins             ; 0                                                   ;
+; Total block memory bits        ; 1,755,244 / 2,528,640 ( 69 % )                      ;
+; DSP block 9-bit elements       ; 240 / 256 ( 94 % )                                  ;
+; Total GXB Receiver Channels    ; 1 / 8 ( 13 % )                                      ;
+; Total GXB Transmitter Channels ; 1 / 8 ( 13 % )                                      ;
+; Total PLLs                     ; 3 / 4 ( 75 % )                                      ;
+; Total DLLs                     ; 1 / 2 ( 50 % )                                      ;
++--------------------------------+-----------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -67,7 +67,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/04/2018 10:54:08 ;
+; Start date & time ; 05/19/2020 12:50:13 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Fpga                ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ applicable agreement for further details.
 +---------------------------------------------------+-------------------------------------------------------+---------------+-------------+--------------------+
 ; Assignment Name                                   ; Value                                                 ; Default Value ; Entity Name ; Section Id         ;
 +---------------------------------------------------+-------------------------------------------------------+---------------+-------------+--------------------+
-; COMPILER_SIGNATURE_ID                             ; 157220082348.152283204810476                          ; --            ; --          ; --                 ;
+; COMPILER_SIGNATURE_ID                             ; 828698081781.158990701332003                          ; --            ; --          ; --                 ;
 ; EDA_DESIGN_EXTRA_ALTERA_SIM_LIB                   ; stratixii_ver                                         ; --            ; --          ; eda_simulation     ;
 ; EDA_DESIGN_EXTRA_ALTERA_SIM_LIB                   ; stratixii_ver                                         ; --            ; --          ; eda_simulation     ;
 ; IP_TOOL_NAME                                      ; ALTREMOTE_UPDATE                                      ; --            ; --          ; --                 ;
@@ -239,114 +239,48 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:03:00     ; 2.4                     ; 866 MB              ; 00:03:05                           ;
-; Partition Merge           ; 00:00:07     ; 1.0                     ; 595 MB              ; 00:00:07                           ;
-; Fitter                    ; 00:21:21     ; 1.6                     ; 2200 MB             ; 00:30:19                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 635 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:30     ; 1.0                     ; 1142 MB             ; 00:00:30                           ;
-; Analysis & Synthesis      ; 00:02:48     ; 1.0                     ; 981 MB              ; 00:02:48                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 618 MB              ; 00:00:09                           ;
-; Fitter                    ; 00:19:01     ; 1.7                     ; 2080 MB             ; 00:26:45                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 634 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:31     ; 1.0                     ; 1164 MB             ; 00:00:30                           ;
-; Analysis & Synthesis      ; 00:02:54     ; 1.0                     ; 980 MB              ; 00:02:52                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 646 MB              ; 00:00:09                           ;
-; Fitter                    ; 00:17:07     ; 1.7                     ; 2067 MB             ; 00:23:47                           ;
-; Assembler                 ; 00:00:12     ; 1.0                     ; 634 MB              ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:33     ; 1.0                     ; 1163 MB             ; 00:00:33                           ;
-; Analysis & Synthesis      ; 00:02:53     ; 1.0                     ; 988 MB              ; 00:02:52                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 633 MB              ; 00:00:09                           ;
-; Analysis & Synthesis      ; 00:03:20     ; 1.0                     ; 978 MB              ; 00:03:19                           ;
-; Partition Merge           ; 00:00:10     ; 1.0                     ; 644 MB              ; 00:00:10                           ;
-; Fitter                    ; 00:22:57     ; 1.6                     ; 2135 MB             ; 00:31:45                           ;
-; Assembler                 ; 00:00:12     ; 1.0                     ; 634 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:31     ; 1.0                     ; 1148 MB             ; 00:00:31                           ;
-; Analysis & Synthesis      ; 00:03:09     ; 1.0                     ; 966 MB              ; 00:03:05                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 617 MB              ; 00:00:10                           ;
-; Analysis & Synthesis      ; 00:02:49     ; 1.0                     ; 959 MB              ; 00:02:49                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 618 MB              ; 00:00:08                           ;
-; Fitter                    ; 00:21:17     ; 1.6                     ; 2131 MB             ; 00:29:17                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 633 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:31     ; 1.0                     ; 1138 MB             ; 00:00:31                           ;
-; Analysis & Synthesis      ; 00:02:56     ; 1.0                     ; 926 MB              ; 00:02:55                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 618 MB              ; 00:00:08                           ;
-; Fitter                    ; 00:18:00     ; 1.6                     ; 2112 MB             ; 00:25:28                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 629 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:29     ; 1.0                     ; 1115 MB             ; 00:00:30                           ;
-; Analysis & Synthesis      ; 00:03:18     ; 1.0                     ; 979 MB              ; 00:03:06                           ;
-; Partition Merge           ; 00:00:10     ; 1.0                     ; 630 MB              ; 00:00:09                           ;
-; Fitter                    ; 00:25:20     ; 1.6                     ; 2225 MB             ; 00:37:20                           ;
-; Assembler                 ; 00:00:12     ; 1.0                     ; 650 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:32     ; 1.0                     ; 1187 MB             ; 00:00:33                           ;
-; Analysis & Synthesis      ; 00:03:02     ; 1.0                     ; 985 MB              ; 00:02:52                           ;
-; Partition Merge           ; 00:00:09     ; 1.0                     ; 629 MB              ; 00:00:09                           ;
-; Fitter                    ; 00:19:22     ; 1.7                     ; 2125 MB             ; 00:27:29                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 635 MB              ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:30     ; 1.0                     ; 1169 MB             ; 00:00:31                           ;
-; Analysis & Synthesis      ; 00:03:52     ; 1.0                     ; 5065 MB             ; 00:03:39                           ;
-; Partition Merge           ; 00:00:11     ; 1.0                     ; 4740 MB             ; 00:00:10                           ;
-; Fitter                    ; 00:23:17     ; 1.6                     ; 6181 MB             ; 00:33:40                           ;
-; Assembler                 ; 00:00:12     ; 1.0                     ; 4785 MB             ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:31     ; 1.1                     ; 5237 MB             ; 00:00:31                           ;
-; Total                     ; 03:49:45     ; --                      ; --                  ; 05:07:11                           ;
+; Analysis & Synthesis      ; 00:03:01     ; 1.1                     ; 1488 MB             ; 00:03:12                           ;
+; Partition Merge           ; 00:00:08     ; 1.0                     ; 1193 MB             ; 00:00:09                           ;
+; Fitter                    ; 00:23:18     ; 1.6                     ; 2894 MB             ; 00:33:13                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 945 MB              ; 00:00:13                           ;
+; TimeQuest Timing Analyzer ; 00:00:37     ; 1.0                     ; 1666 MB             ; 00:00:37                           ;
+; Analysis & Synthesis      ; 00:02:46     ; 1.0                     ; 1299 MB             ; 00:02:46                           ;
+; Partition Merge           ; 00:00:11     ; 1.0                     ; 1188 MB             ; 00:00:11                           ;
+; Fitter                    ; 00:23:32     ; 1.6                     ; 3030 MB             ; 00:33:20                           ;
+; Assembler                 ; 00:00:14     ; 1.0                     ; 946 MB              ; 00:00:14                           ;
+; TimeQuest Timing Analyzer ; 00:00:39     ; 1.0                     ; 1671 MB             ; 00:00:40                           ;
+; Analysis & Synthesis      ; 00:02:48     ; 1.0                     ; 1294 MB             ; 00:02:48                           ;
+; Analysis & Synthesis      ; 00:02:45     ; 1.0                     ; 1268 MB             ; 00:02:45                           ;
+; Partition Merge           ; 00:00:11     ; 1.0                     ; 1190 MB             ; 00:00:11                           ;
+; Fitter                    ; 00:28:41     ; 1.6                     ; 3206 MB             ; 00:41:13                           ;
+; Assembler                 ; 00:00:14     ; 1.0                     ; 947 MB              ; 00:00:14                           ;
+; TimeQuest Timing Analyzer ; 00:00:40     ; 1.0                     ; 1659 MB             ; 00:00:41                           ;
+; Total                     ; 01:29:58     ; --                      ; --                  ; 02:02:27                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
 +----------------------------------------------------------------------------------------+
 ; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.1        ; x86_64         ;
-; Analysis & Synthesis      ; nbmusico         ; Windows 7 ; 6.2        ; x86_64         ;
-; Partition Merge           ; nbmusico         ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; nbmusico         ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; nbmusico         ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; nbmusico         ; Windows 7 ; 6.2        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++---------------------------+--------------------+---------+------------+----------------+
+; Module Name               ; Machine Hostname   ; OS Name ; OS Version ; Processor type ;
++---------------------------+--------------------+---------+------------+----------------+
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
++---------------------------+--------------------+---------+------------+----------------+
 
 
 ------------
@@ -363,39 +297,6 @@ quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 quartus_sta Fpga -c Fpga
 quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_sta Fpga -c Fpga
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_sta Fpga -c Fpga
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_sta Fpga -c Fpga
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_sta Fpga -c Fpga
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_sta Fpga -c Fpga
-quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
-quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
-quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
-quartus_sta Fpga -c Fpga
 quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
 quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
 quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga

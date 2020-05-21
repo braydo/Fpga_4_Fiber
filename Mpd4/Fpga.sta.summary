@@ -3,68 +3,68 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow Model Setup 'ADC_LCLK1'
-Slack : -43.038
-TNS   : -915.040
+Slack : -42.261
+TNS   : -916.586
 
 Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -23.576
-TNS   : -683.412
+Slack : -23.523
+TNS   : -693.226
 
 Type  : Slow Model Setup 'Ck_100MHz_virt'
-Slack : -20.994
-TNS   : -1375.163
+Slack : -20.385
+TNS   : -1336.364
 
 Type  : Slow Model Setup 'Ck_40MHz_virt'
-Slack : -18.647
-TNS   : -48.192
+Slack : -18.709
+TNS   : -45.676
 
 Type  : Slow Model Setup 'ADC_FRAME_CK2'
-Slack : -14.720
-TNS   : -3811.563
-
-Type  : Slow Model Setup 'Ck_10MHz_virt'
-Slack : -9.172
-TNS   : -35.243
+Slack : -15.035
+TNS   : -3883.704
 
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
-Slack : -9.090
-TNS   : -1231.180
+Slack : -10.168
+TNS   : -1498.790
 
-Type  : Slow Model Setup 'ADC_FRAME_CK1'
-Slack : -7.341
-TNS   : -2070.222
-
-Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[1]'
-Slack : -6.531
-TNS   : -911.925
-
-Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[1]~1'
-Slack : -5.923
-TNS   : -1034.627
+Type  : Slow Model Setup 'Ck_10MHz_virt'
+Slack : -9.219
+TNS   : -35.188
 
 Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : -5.844
-TNS   : -855.202
+Slack : -7.841
+TNS   : -884.925
 
-Type  : Slow Model Setup 'ADC_LCLK2'
-Slack : -5.825
-TNS   : -192.687
+Type  : Slow Model Setup 'ADC_FRAME_CK1'
+Slack : -7.135
+TNS   : -2071.217
 
 Type  : Slow Model Setup 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
-Slack : -4.181
-TNS   : -109.109
+Slack : -5.978
+TNS   : -157.610
+
+Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[1]~1'
+Slack : -5.658
+TNS   : -975.416
+
+Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[1]'
+Slack : -5.585
+TNS   : -831.498
+
+Type  : Slow Model Setup 'ADC_LCLK2'
+Slack : -5.486
+TNS   : -188.526
 
 Type  : Slow Model Setup 'CLK_IN_P0'
-Slack : -3.895
-TNS   : -108.544
+Slack : -4.916
+TNS   : -163.060
 
 Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[2]~1'
 Slack : -1.514
 TNS   : -4.542
 
 Type  : Slow Model Setup 'n/a'
-Slack : -1.180
-TNS   : -1.180
+Slack : -1.177
+TNS   : -1.177
 
 Type  : Slow Model Setup 'ClockGenerator|altpll_component|pll|clk[2]'
 Slack : -0.452
@@ -79,7 +79,15 @@ Slack : 0.315
 TNS   : 0.000
 
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_mimic'
-Slack : 0.840
+Slack : 0.844
+TNS   : 0.000
+
+Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
+Slack : 0.930
+TNS   : 0.000
+
+Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
+Slack : 1.194
 TNS   : 0.000
 
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ck_n_SDRAM_CKb_tDQSS'
@@ -98,10 +106,6 @@ Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2S
 Slack : 1.305
 TNS   : 0.000
 
-Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 1.663
-TNS   : 0.000
-
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ck_n_SDRAM_CKb_ac_fall'
 Slack : 2.227
 TNS   : 0.000
@@ -110,72 +114,64 @@ Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2S
 Slack : 2.238
 TNS   : 0.000
 
-Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
-Slack : 2.323
+Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
+Slack : 2.545
 TNS   : 0.000
 
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 2.726
+Slack : 2.836
 TNS   : 0.000
 
 Type  : Slow Model Setup 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_rec[0].receive|clkout'
-Slack : 3.155
-TNS   : 0.000
-
-Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 3.459
+Slack : 2.977
 TNS   : 0.000
 
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 10.917
+Slack : 8.885
 TNS   : 0.000
 
 Type  : Slow Model Setup 'MASTER_CLOCK'
-Slack : 23.858
+Slack : 23.587
 TNS   : 0.000
 
 Type  : Slow Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_resync'
-Slack : 102.069
+Slack : 102.213
 TNS   : 0.000
 
 Type  : Slow Model Hold 'ADC_FRAME_CK1'
-Slack : -23.487
-TNS   : -6709.012
+Slack : -23.493
+TNS   : -6665.775
 
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
 Slack : -2.685
-TNS   : -169.958
+TNS   : -183.706
 
 Type  : Slow Model Hold 'ADC_LCLK1'
-Slack : -1.304
-TNS   : -15.746
+Slack : -1.297
+TNS   : -15.887
 
 Type  : Slow Model Hold 'ADC_LCLK2'
 Slack : -0.757
-TNS   : -16.698
+TNS   : -12.550
 
 Type  : Slow Model Hold 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -0.428
-TNS   : -2.204
-
-Type  : Slow Model Hold 'CLK_IN_P0'
-Slack : -0.374
-TNS   : -0.374
+Slack : -0.385
+TNS   : -17.067
 
 Type  : Slow Model Hold 'ClockGenerator|altpll_component|pll|clk[1]'
 Slack : -0.181
-TNS   : -3.239
+TNS   : -3.518
 
 Type  : Slow Model Hold 'ClockGenerator|altpll_component|pll|clk[2]'
 Slack : -0.181
 TNS   : -0.543
 
 Type  : Slow Model Hold 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : 0.097
+Slack : 0.146
 TNS   : 0.000
 
 Type  : Slow Model Hold 'ADC_FRAME_CK2'
-Slack : 0.490
+Slack : 0.480
 TNS   : 0.000
 
 Type  : Slow Model Hold 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_rec[0].receive|clkout'
@@ -198,6 +194,10 @@ Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2Sd
 Slack : 0.490
 TNS   : 0.000
 
+Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
+Slack : 0.490
+TNS   : 0.000
+
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
 Slack : 0.490
 TNS   : 0.000
@@ -207,11 +207,11 @@ Slack : 0.490
 TNS   : 0.000
 
 Type  : Slow Model Hold 'MASTER_CLOCK'
-Slack : 0.514
+Slack : 0.518
 TNS   : 0.000
 
-Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 0.518
+Type  : Slow Model Hold 'CLK_IN_P0'
+Slack : 0.796
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsin_SDRAM_DQS'
@@ -219,7 +219,7 @@ Slack : 0.878
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_mimic'
-Slack : 1.016
+Slack : 1.012
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsout_SDRAM_DQS'
@@ -238,10 +238,6 @@ Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2Sd
 Slack : 1.292
 TNS   : 0.000
 
-Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 1.300
-TNS   : 0.000
-
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ck_n_SDRAM_CKb_tDSS'
 Slack : 1.303
 TNS   : 0.000
@@ -254,12 +250,16 @@ Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2Sd
 Slack : 1.650
 TNS   : 0.000
 
-Type  : Slow Model Hold 'n/a'
-Slack : 3.955
+Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
+Slack : 2.214
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ck_10MHz_virt'
-Slack : 3.994
+Slack : 3.731
+TNS   : 0.000
+
+Type  : Slow Model Hold 'n/a'
+Slack : 3.955
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ck_100MHz_virt'
@@ -267,139 +267,139 @@ Slack : 4.007
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ck_40MHz_virt'
-Slack : 6.231
+Slack : 5.420
 TNS   : 0.000
 
 Type  : Slow Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_resync'
-Slack : 102.375
+Slack : 102.374
 TNS   : 0.000
-
-Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[2]'
-Slack : -4.959
-TNS   : -10.758
-
-Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -4.696
-TNS   : -871.272
-
-Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[1]'
-Slack : -4.596
-TNS   : -707.194
-
-Type  : Slow Model Recovery 'ADC_FRAME_CK2'
-Slack : -4.362
-TNS   : -1968.107
-
-Type  : Slow Model Recovery 'ADC_FRAME_CK1'
-Slack : -3.901
-TNS   : -2221.336
 
 Type  : Slow Model Recovery 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
-Slack : -3.831
-TNS   : -45.972
+Slack : -5.891
+TNS   : -70.692
+
+Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[2]'
+Slack : -4.724
+TNS   : -9.345
+
+Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[0]'
+Slack : -4.605
+TNS   : -842.683
+
+Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[1]'
+Slack : -4.505
+TNS   : -748.890
+
+Type  : Slow Model Recovery 'ADC_FRAME_CK2'
+Slack : -4.377
+TNS   : -2075.035
+
+Type  : Slow Model Recovery 'ADC_FRAME_CK1'
+Slack : -4.126
+TNS   : -2138.473
 
 Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[2]~1'
-Slack : -3.713
-TNS   : -10.030
+Slack : -3.478
+TNS   : -9.782
 
 Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[1]~1'
-Slack : -3.694
-TNS   : -334.596
+Slack : -3.391
+TNS   : -388.899
 
 Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
-Slack : -2.001
-TNS   : -40.069
+Slack : -1.502
+TNS   : -38.900
 
 Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 2.057
-TNS   : 0.000
-
-Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
-Slack : 3.099
+Slack : 2.075
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 3.698
+Slack : 2.185
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
+Slack : 2.544
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 3.705
+Slack : 3.700
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 17.298
+Slack : 13.514
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : 19.673
+Slack : 19.764
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsin_SDRAM_DQS'
-Slack : 101.960
+Slack : 101.972
 TNS   : 0.000
 
 Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -0.059
-TNS   : -2.360
+Slack : -0.802
+TNS   : -32.080
 
 Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : 0.472
-TNS   : 0.000
+Slack : -0.271
+TNS   : -10.840
 
 Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
-Slack : 0.569
+Slack : 0.568
 TNS   : 0.000
 
 Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[1]'
-Slack : 0.981
-TNS   : 0.000
-
-Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
-Slack : 1.046
-TNS   : 0.000
-
-Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 1.054
-TNS   : 0.000
-
-Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 1.061
+Slack : 0.996
 TNS   : 0.000
 
 Type  : Slow Model Removal 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
-Slack : 1.069
+Slack : 1.052
+TNS   : 0.000
+
+Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
+Slack : 1.059
 TNS   : 0.000
 
 Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[2]'
-Slack : 1.215
+Slack : 1.234
 TNS   : 0.000
 
 Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[1]~1'
-Slack : 1.452
+Slack : 1.467
 TNS   : 0.000
 
-Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[2]~1'
-Slack : 1.887
+Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
+Slack : 1.502
 TNS   : 0.000
 
 Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 2.084
+Slack : 1.867
 TNS   : 0.000
 
-Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 2.089
+Type  : Slow Model Removal 'ClockGenerator|altpll_component|pll|clk[2]~1'
+Slack : 1.906
+TNS   : 0.000
+
+Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
+Slack : 2.574
 TNS   : 0.000
 
 Type  : Slow Model Removal 'ADC_FRAME_CK1'
-Slack : 2.652
+Slack : 3.499
+TNS   : 0.000
+
+Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
+Slack : 3.832
 TNS   : 0.000
 
 Type  : Slow Model Removal 'ADC_FRAME_CK2'
-Slack : 3.185
+Slack : 3.866
 TNS   : 0.000
 
 Type  : Slow Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsin_SDRAM_DQS'
-Slack : 102.776
+Slack : 102.764
 TNS   : 0.000
 
 Type  : Slow Model Minimum Pulse Width 'ADC_LCLK1'
@@ -555,60 +555,60 @@ Slack : 415.789
 TNS   : 0.000
 
 Type  : Fast Model Setup 'ADC_LCLK1'
-Slack : -29.807
-TNS   : -560.118
+Slack : -29.447
+TNS   : -553.349
 
 Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -21.664
-TNS   : -313.465
+Slack : -21.597
+TNS   : -321.881
 
 Type  : Fast Model Setup 'Ck_40MHz_virt'
-Slack : -13.730
-TNS   : -34.213
+Slack : -13.751
+TNS   : -32.984
 
 Type  : Fast Model Setup 'Ck_100MHz_virt'
-Slack : -10.488
-TNS   : -704.410
+Slack : -10.144
+TNS   : -690.639
 
 Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
-Slack : -9.096
-TNS   : -1029.847
+Slack : -9.429
+TNS   : -997.920
 
 Type  : Fast Model Setup 'Ck_10MHz_virt'
-Slack : -3.995
-TNS   : -14.742
+Slack : -3.836
+TNS   : -14.753
 
 Type  : Fast Model Setup 'ADC_FRAME_CK2'
-Slack : -3.149
-TNS   : -757.386
+Slack : -2.995
+TNS   : -750.989
 
 Type  : Fast Model Setup 'ADC_FRAME_CK1'
-Slack : -2.986
-TNS   : -819.338
-
-Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[1]'
-Slack : -2.771
-TNS   : -352.440
-
-Type  : Fast Model Setup 'ADC_LCLK2'
-Slack : -2.439
-TNS   : -93.088
-
-Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[1]~1'
-Slack : -2.076
-TNS   : -349.373
+Slack : -2.896
+TNS   : -819.097
 
 Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : -1.963
-TNS   : -333.928
-
-Type  : Fast Model Setup 'CLK_IN_P0'
-Slack : -1.872
-TNS   : -51.854
+Slack : -2.843
+TNS   : -343.338
 
 Type  : Fast Model Setup 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
-Slack : -1.854
-TNS   : -47.840
+Slack : -2.687
+TNS   : -69.993
+
+Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[1]'
+Slack : -2.413
+TNS   : -327.739
+
+Type  : Fast Model Setup 'ADC_LCLK2'
+Slack : -2.307
+TNS   : -91.641
+
+Type  : Fast Model Setup 'CLK_IN_P0'
+Slack : -2.215
+TNS   : -70.161
+
+Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[1]~1'
+Slack : -1.995
+TNS   : -328.641
 
 Type  : Fast Model Setup 'ClockGenerator|altpll_component|pll|clk[2]~1'
 Slack : -0.643
@@ -643,11 +643,15 @@ Slack : 1.281
 TNS   : 0.000
 
 Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_mimic'
-Slack : 1.625
+Slack : 1.629
 TNS   : 0.000
 
 Type  : Fast Model Setup 'n/a'
-Slack : 2.320
+Slack : 2.321
+TNS   : 0.000
+
+Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
+Slack : 2.805
 TNS   : 0.000
 
 Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ck_n_SDRAM_CKb_ac_fall'
@@ -658,104 +662,92 @@ Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2S
 Slack : 2.817
 TNS   : 0.000
 
-Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 3.015
-TNS   : 0.000
-
 Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
 Slack : 3.279
 TNS   : 0.000
 
-Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 4.124
+Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
+Slack : 4.120
 TNS   : 0.000
 
-Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 4.444
+Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
+Slack : 4.177
 TNS   : 0.000
 
 Type  : Fast Model Setup 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_rec[0].receive|clkout'
-Slack : 6.173
+Slack : 6.021
 TNS   : 0.000
 
 Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 9.725
+Slack : 8.819
 TNS   : 0.000
 
 Type  : Fast Model Setup 'MASTER_CLOCK'
-Slack : 24.531
+Slack : 24.431
 TNS   : 0.000
 
 Type  : Fast Model Setup 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_resync'
-Slack : 101.774
+Slack : 101.840
 TNS   : 0.000
 
 Type  : Fast Model Hold 'ADC_FRAME_CK1'
 Slack : -24.378
-TNS   : -7497.249
-
-Type  : Fast Model Hold 'ADC_LCLK2'
-Slack : -2.768
-TNS   : -76.197
+TNS   : -7471.880
 
 Type  : Fast Model Hold 'ADC_LCLK1'
-Slack : -1.852
-TNS   : -50.682
+Slack : -2.009
+TNS   : -52.973
+
+Type  : Fast Model Hold 'ADC_LCLK2'
+Slack : -1.971
+TNS   : -51.231
 
 Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
 Slack : -0.681
-TNS   : -60.869
+TNS   : -63.904
 
 Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -0.296
-TNS   : -0.944
-
-Type  : Fast Model Hold 'CLK_IN_P0'
-Slack : -0.180
-TNS   : -0.180
-
-Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : -0.154
-TNS   : -0.154
+Slack : -0.184
+TNS   : -7.968
 
 Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[1]'
 Slack : -0.064
-TNS   : -1.192
+TNS   : -1.304
 
 Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[2]'
 Slack : -0.064
 TNS   : -0.192
 
+Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[0]~1'
+Slack : -0.036
+TNS   : -1.440
+
 Type  : Fast Model Hold 'ADC_FRAME_CK2'
-Slack : 0.208
+Slack : 0.196
 TNS   : 0.000
 
 Type  : Fast Model Hold 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
 Slack : 0.212
 TNS   : 0.000
 
-Type  : Fast Model Hold 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_rec[0].receive|clkout'
-Slack : 0.213
-TNS   : 0.000
-
-Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
-Slack : 0.213
-TNS   : 0.000
-
 Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
+Slack : 0.213
+TNS   : 0.000
+
+Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
 Slack : 0.215
 TNS   : 0.000
 
 Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 0.215
+Slack : 0.216
 TNS   : 0.000
 
 Type  : Fast Model Hold 'MASTER_CLOCK'
-Slack : 0.215
+Slack : 0.218
 TNS   : 0.000
 
-Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 0.217
+Type  : Fast Model Hold 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_rec[0].receive|clkout'
+Slack : 0.224
 TNS   : 0.000
 
 Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[1]~1'
@@ -766,16 +758,24 @@ Type  : Fast Model Hold 'ClockGenerator|altpll_component|pll|clk[2]~1'
 Slack : 0.224
 TNS   : 0.000
 
-Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_mimic'
-Slack : 0.453
+Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
+Slack : 0.224
 TNS   : 0.000
 
-Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 0.537
+Type  : Fast Model Hold 'CLK_IN_P0'
+Slack : 0.378
+TNS   : 0.000
+
+Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_mimic'
+Slack : 0.449
 TNS   : 0.000
 
 Type  : Fast Model Hold 'Ck_10MHz_virt'
-Slack : 0.631
+Slack : 0.532
+TNS   : 0.000
+
+Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
+Slack : 0.861
 TNS   : 0.000
 
 Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsin_SDRAM_DQS'
@@ -814,144 +814,144 @@ Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2Sd
 Slack : 1.323
 TNS   : 0.000
 
+Type  : Fast Model Hold 'Ck_40MHz_virt'
+Slack : 1.836
+TNS   : 0.000
+
 Type  : Fast Model Hold 'n/a'
 Slack : 2.442
 TNS   : 0.000
 
-Type  : Fast Model Hold 'Ck_40MHz_virt'
-Slack : 2.844
-TNS   : 0.000
-
 Type  : Fast Model Hold 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_resync'
-Slack : 103.018
+Slack : 103.008
 TNS   : 0.000
-
-Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[2]'
-Slack : -2.159
-TNS   : -4.187
-
-Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -1.938
-TNS   : -356.916
-
-Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[1]'
-Slack : -1.838
-TNS   : -281.653
 
 Type  : Fast Model Recovery 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
-Slack : -1.723
-TNS   : -20.676
+Slack : -2.555
+TNS   : -30.660
+
+Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[2]'
+Slack : -2.058
+TNS   : -4.072
+
+Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[0]'
+Slack : -1.929
+TNS   : -352.989
+
+Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[1]'
+Slack : -1.829
+TNS   : -298.600
 
 Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[1]~1'
-Slack : -1.432
-TNS   : -124.959
+Slack : -1.342
+TNS   : -143.715
 
 Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[2]~1'
-Slack : -1.216
-TNS   : -2.145
+Slack : -1.229
+TNS   : -2.043
 
 Type  : Fast Model Recovery 'ADC_FRAME_CK2'
-Slack : -1.166
-TNS   : -414.491
+Slack : -1.187
+TNS   : -483.952
 
 Type  : Fast Model Recovery 'ADC_FRAME_CK1'
-Slack : -0.926
-TNS   : -449.377
+Slack : -0.956
+TNS   : -444.663
 
 Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
-Slack : -0.790
-TNS   : -16.206
+Slack : -0.601
+TNS   : -15.668
 
 Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 3.819
-TNS   : 0.000
-
-Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
-Slack : 4.274
-TNS   : 0.000
-
-Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 4.514
+Slack : 3.831
 TNS   : 0.000
 
 Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 4.514
+Slack : 3.923
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
+Slack : 4.059
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
+Slack : 4.511
 TNS   : 0.000
 
 Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 19.446
+Slack : 17.726
 TNS   : 0.000
 
 Type  : Fast Model Recovery 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : 22.814
+Slack : 22.823
 TNS   : 0.000
 
 Type  : Fast Model Recovery 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsin_SDRAM_DQS'
-Slack : 104.420
+Slack : 104.425
 TNS   : 0.000
 
 Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[0]'
-Slack : -0.147
-TNS   : -5.880
+Slack : -0.404
+TNS   : -16.160
 
 Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[0]~1'
-Slack : 0.001
-TNS   : 0.000
+Slack : -0.256
+TNS   : -10.240
 
 Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[0]'
-Slack : 0.103
-TNS   : 0.000
-
-Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[1]'
-Slack : 0.419
-TNS   : 0.000
-
-Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
-Slack : 0.462
-TNS   : 0.000
-
-Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
-Slack : 0.467
-TNS   : 0.000
-
-Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
-Slack : 0.467
+Slack : 0.101
 TNS   : 0.000
 
 Type  : Fast Model Removal 'AuroraInterface|aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3_inst|gtx_wrapper_i|gxb_transceiver_inst|alt2gxb_component|channel_tx[0].transmit|clkout'
-Slack : 0.471
+Slack : 0.465
+TNS   : 0.000
+
+Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[1]'
+Slack : 0.470
 TNS   : 0.000
 
 Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[2]'
-Slack : 0.509
+Slack : 0.522
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[1]'
+Slack : 0.539
 TNS   : 0.000
 
 Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[1]~1'
-Slack : 0.633
+Slack : 0.627
 TNS   : 0.000
 
-Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[2]~1'
-Slack : 0.798
-TNS   : 0.000
-
-Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
-Slack : 0.862
+Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[4]'
+Slack : 0.664
 TNS   : 0.000
 
 Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|pll|altpll_component|pll|clk[2]'
-Slack : 0.881
+Slack : 0.806
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ClockGenerator|altpll_component|pll|clk[2]~1'
+Slack : 0.811
+TNS   : 0.000
+
+Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_postamble'
+Slack : 1.058
 TNS   : 0.000
 
 Type  : Fast Model Removal 'ADC_FRAME_CK1'
-Slack : 1.046
+Slack : 1.372
 TNS   : 0.000
 
 Type  : Fast Model Removal 'ADC_FRAME_CK2'
-Slack : 1.266
+Slack : 1.498
+TNS   : 0.000
+
+Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_inst|clk|scan_clk|regout_clock'
+Slack : 1.611
 TNS   : 0.000
 
 Type  : Fast Model Removal 'Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_ddr_dqsin_SDRAM_DQS'
-Slack : 100.488
+Slack : 100.483
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'ADC_LCLK1'
