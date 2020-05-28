@@ -235,112 +235,33 @@ endmodule
 module EvtHandler(input CLK, input RSTb, input ENABLE,
 		input OUT_FIFO_FULL,			// from AuroraInterface
 		output OUT_FIFO_WR,				// to AuroraInterface
-		output reg EVT_FIFO_END,		// to AuroraInterface
+		output EVT_FIFO_END,		// to AuroraInterface
 		output IN_FIFO_RD,				// to Output FIFO Buffer
 		input IN_FIFO_EMPTY,			// from Output FIFO Buffer
 		input [31:0] EVB_DATA,			// from Output FIFO Buffer
 		output [31:0] EVT_FIFO_DATA);	// to AuroraInterface
-//		output reg [31:0] EVT_FIFO_DATA);	// to AuroraInterface
 
-	reg [7:0] fsm_status;
-	reg IN_FIFO_RD_int, OUT_FIFO_WR_int, OUT_FIFO_WR_forced;
-	wire block_trailer, channel_free;
+	reg WR_END;
+	wire block_trailer;
 
-assign EVT_FIFO_DATA = EVB_DATA;
-
-//`define BLOCK_TRAILER	{1'b1, 4'h1, MODULE_ID, 2'b0, BlockWordCounter}
-
-	assign channel_free = ~IN_FIFO_EMPTY & ~OUT_FIFO_FULL;
-	assign IN_FIFO_RD = IN_FIFO_RD_int & channel_free;
-	assign OUT_FIFO_WR = (OUT_FIFO_WR_int & channel_free) | (EVT_FIFO_END & ~OUT_FIFO_FULL) | OUT_FIFO_WR_forced;
+	assign EVT_FIFO_DATA = EVB_DATA;
+	assign EVT_FIFO_END  = WR_END;
+	assign OUT_FIFO_WR   = ~OUT_FIFO_FULL & (~IN_FIFO_EMPTY | WR_END) & ENABLE;
+	assign IN_FIFO_RD    = ~OUT_FIFO_FULL & ~IN_FIFO_EMPTY & ~WR_END & ENABLE;
 	assign block_trailer = (EVB_DATA[23:20] == {3'h1, 1'b0}) ? 1 : 0;	// 24 bit format
-	
+		
 	always @(posedge CLK or negedge RSTb)
 	begin
 		if( RSTb == 0 )
 		begin
-			fsm_status <= 0;
-			OUT_FIFO_WR_int <= 0;
-			OUT_FIFO_WR_forced <= 0;
-			IN_FIFO_RD_int <= 0;
-			EVT_FIFO_END <= 0;
+			WR_END <= 0;
 		end
 		else
 		begin
-			case( fsm_status )
-				8'd0:	begin
-							OUT_FIFO_WR_int <= 0;
-							OUT_FIFO_WR_forced <= 0;
-							IN_FIFO_RD_int <= 0;
-							EVT_FIFO_END <= 0;
-							if( ENABLE & channel_free )
-							begin
-								fsm_status <= 1;
-							end
-						end
-				8'd1:	begin
-							IN_FIFO_RD_int <= 1;
-							OUT_FIFO_WR_int <= 1;
-							fsm_status <= 2;
-						end
-				8'd2:	begin
-							case({block_trailer, IN_FIFO_EMPTY, OUT_FIFO_FULL})
-								3'b000: fsm_status <= 2;
-								3'b001: begin IN_FIFO_RD_int <= 0; OUT_FIFO_WR_int <= 0; fsm_status <= 0; end
-								3'b010: begin IN_FIFO_RD_int <= 0; OUT_FIFO_WR_int <= 0; fsm_status <= 0; end
-								3'b011: begin IN_FIFO_RD_int <= 0; OUT_FIFO_WR_int <= 0; fsm_status <= 0; end
-								
-								3'b100: begin IN_FIFO_RD_int <= 0; EVT_FIFO_END <= 1; fsm_status <= 3; end
-								3'b101: begin IN_FIFO_RD_int <= 0; OUT_FIFO_WR_int <= 0; fsm_status <= 4; end
-								3'b110: begin IN_FIFO_RD_int <= 0; OUT_FIFO_WR_int <= 0; fsm_status <= 6; end
-								3'b111: begin IN_FIFO_RD_int <= 0; OUT_FIFO_WR_int <= 0; fsm_status <= 6; end
-							endcase
-						end
-				8'd3:	begin
-							if( ~OUT_FIFO_FULL )
-							begin
-								EVT_FIFO_END <= 0;
-								OUT_FIFO_WR_int <= 0;
-								fsm_status <= 0;
-							end
-						end
-						
-				8'd4:	begin
-							if( ~OUT_FIFO_FULL )
-							begin
-								IN_FIFO_RD_int <= 1;	// Copy block trailer
-								OUT_FIFO_WR_int <= 1;
-								fsm_status <= 5;
-							end
-						end
-				8'd5:	begin
-							IN_FIFO_RD_int <= 0;
-							OUT_FIFO_WR_int <= 0;
-							if( ~OUT_FIFO_FULL )
-							begin
-								EVT_FIFO_END <= 1;
-								fsm_status <= 0;
-							end
-						end
-						
-				8'd6:	begin
-							if( ~OUT_FIFO_FULL )
-							begin
-								OUT_FIFO_WR_forced <= 1;	// force write of block trailer
-								fsm_status <= 7;
-							end
-						end
-				8'd7:	begin
-							OUT_FIFO_WR_forced <= 0;
-							if( ~OUT_FIFO_FULL )
-							begin
-								EVT_FIFO_END <= 1;
-								fsm_status <= 0;
-							end
-						end
-
-				default: fsm_status <= 0;
-			endcase
+			if (IN_FIFO_RD & block_trailer)
+				WR_END <= 1;
+			else if (WR_END & OUT_FIFO_WR)
+				WR_END <= 0;
 		end
 	end
 	

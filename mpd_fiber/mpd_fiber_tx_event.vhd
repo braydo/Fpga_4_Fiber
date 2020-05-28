@@ -124,13 +124,13 @@ begin
 				end if;
 
 			when TX_EVENT =>
-				if (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '0') then
+				if (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '0') and (EVT_FIFO_BUSY = '0') then
 					TX_SRC_RDY_N <= '0';
 					if TX_DST_RDY_N = '0' then
 						TX_STATE_NEXT <= TX_EVENT;
 						EVT_FIFO_RD <= '1';
 					end if;
-				elsif (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '1') then
+				elsif (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '1') and (EVT_FIFO_BUSY = '0') then
 					TX_SRC_RDY_N <= '0';
 					TX_EOF_N <= '0';
 					if TX_DST_RDY_N = '0' then

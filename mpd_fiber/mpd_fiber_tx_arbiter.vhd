@@ -41,9 +41,9 @@ begin
 				elsif TX_SRC_RDY_N_1 = '0' then
 					ACTIVE_1 <= '1';
 				end if;
-			elsif (ACTIVE_0 = '1') and (TX_SRC_RDY_N_0 = '0') and (TX_EOF_N_0 = '0') then
+			elsif (ACTIVE_0 = '1') and (TX_SRC_RDY_N_0 = '0') and (TX_EOF_N_0 = '0') and (TX_DST_RDY_N = '0') then
 				ACTIVE_0 <= '0';
-			elsif (ACTIVE_1 = '1') and (TX_SRC_RDY_N_1 = '0') and (TX_EOF_N_1 = '0') then
+			elsif (ACTIVE_1 = '1') and (TX_SRC_RDY_N_1 = '0') and (TX_EOF_N_1 = '0') and (TX_DST_RDY_N = '0') then
 				ACTIVE_1 <= '0';
 			end if;
 		end if;

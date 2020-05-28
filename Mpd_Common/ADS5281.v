@@ -34,7 +34,7 @@ reg [1:0] pattern;
 
 integer apv_data_file [7:0];
 reg file_error;
-reg [8*32:1] filename;
+reg [8*256:1] filename;
 reg [7:0] filename_suffix;
 
 assign #8 OUT18 = outX;

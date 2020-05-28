@@ -92,7 +92,7 @@ module DpRam128x12 (
 		altsyncram_component.clock_enable_input_b = "BYPASS",
 		altsyncram_component.clock_enable_output_a = "BYPASS",
 		altsyncram_component.clock_enable_output_b = "BYPASS",
-		altsyncram_component.init_file = "./Mpd_Common/DpRam128x12_init.mif",
+		altsyncram_component.init_file = "/home/braydo/Projects/fe_fw/Simulation/aldec/default/testbench/mpd_data/DpRam128x12_init.mif",
 		altsyncram_component.intended_device_family = "Arria GX",
 		altsyncram_component.lpm_type = "altsyncram",
 		altsyncram_component.numwords_a = 128,
