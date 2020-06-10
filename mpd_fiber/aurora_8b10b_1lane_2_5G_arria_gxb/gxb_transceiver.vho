@@ -305,7 +305,7 @@
 	wire_n01O_dprioin <= ( wire_n00i_cmuplldprioout(39 DOWNTO 0));
 	n01O :  arriagx_hssi_cmu_pll
 	  GENERIC MAP (
-		charge_pump_current_control => 2,
+		charge_pump_current_control => 1,
 		divide_by => 1,
 		dprio_config_mode => 0,
 		enable_pll_cascade => "false",
@@ -523,7 +523,7 @@
 	n01l :  arriagx_hssi_transmitter
 	  GENERIC MAP (
 		allow_polarity_inversion => "false",
-		analog_power => "1.5v",
+		analog_power => "1.2v",
 		channel_bonding => "none",
 		channel_number => 0,
 		channel_width => 16,
@@ -562,7 +562,7 @@
 		use_double_data_mode => "true",
 		use_serializer_double_data_mode => "false",
 		use_termvoltage_signal => "false",
-		vod_selection => 3,
+		vod_selection => 4,
 		wr_clk_mux_select => "core_clk"
 	  )
 	  PORT MAP ( 

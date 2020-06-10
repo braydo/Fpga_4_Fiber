@@ -141,8 +141,7 @@ output SPARE_CLK_TTL;	// 2.5 V clock
 	wire [63:0] Sdram_Fifo_Output_Data;
 
 	wire [1:0] internal_user_in;
-reg Vme_clock;
-	wire ck_40MHz, ck_1MHz, time_clock;//, Vme_clock;
+	wire ck_40MHz, ck_1MHz, time_clock, Vme_clock;
 	wire ck_10MHz;
 	wire Vme_DataReadout_ceB;
 	wire ObufStatus_ceB, AdcConfig_ceB, I2C_Controller_ceB, Vme_Sdram_ceB, Vme_ConfigReg_ceB;
