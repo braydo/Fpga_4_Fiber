@@ -365,7 +365,7 @@ VME_A[17]                    : C12       : bidir  : 3.3-V LVTTL       :         
 VME_A[18]                    : C13       : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 VME_A[19]                    : C14       : bidir  : 3.3-V LVTTL       :         : 4         : Y              
 ADC_CONV_CK1                 : C15       : output : LVDS              :         : 9         : Y              
-GXB_CK                       : C16       : input  : 3.3-V LVTTL       :         : 3         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C16       :        :                   :         : 3         :                
 MII_25MHZ_CLOCK              : C17       : output : 3.3-V LVTTL       :         : 11        : Y              
 VME_AM[2]                    : C18       : input  : 3.3-V LVTTL       :         : 3         : Y              
 VME_AM[3]                    : C19       : input  : 3.3-V LVTTL       :         : 3         : Y              
@@ -465,8 +465,8 @@ SPARE25[2]                   : F28       : bidir  : 2.5 V             :         
 GXB_RX                       : G1        : input  : LVDS              :         : 13        : Y              
 GXB_RX(n)                    : G2        : input  : LVDS              :         : 13        : Y              
 GND                          : G3        : gnd    :                   :         :           :                
-GXB_VCC*                     : G4        :        :                   : 1.2V    : 13        :                
-GND*                         : G5        :        :                   :         : 13        :                
+GXB_CK                       : G4        : input  : LVDS              :         : 13        : Y              
+GXB_CK(n)                    : G5        : input  : LVDS              :         : 13        : Y              
 GND                          : G6        : gnd    :                   :         :           :                
 TEMPDIODEn                   : G7        :        :                   :         :           :                
 MSEL3                        : G8        :        :                   :         : 4         :                

@@ -1,5 +1,5 @@
 Flow report for Fpga
-Tue Jun  9 17:05:30 2020
+Wed Jul 29 16:10:04 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +--------------------------------+-----------------------------------------------------+
-; Flow Status                    ; Successful - Tue Jun  9 17:04:47 2020               ;
+; Flow Status                    ; Successful - Wed Jul 29 16:09:11 2020               ;
 ; Quartus II 64-Bit Version      ; 13.0.1 Build 232 06/12/2013 SP 1.78 SJ Full Version ;
 ; Revision Name                  ; Fpga                                                ;
 ; Top-level Entity Name          ; Fpga                                                ;
@@ -48,10 +48,10 @@ applicable agreement for further details.
 ; Device                         ; EP1AGX60DF780C6                                     ;
 ; Timing Models                  ; Final                                               ;
 ; Logic utilization              ; 70 %                                                ;
-;     Combinational ALUTs        ; 24,794 / 48,080 ( 52 % )                            ;
-;     Dedicated logic registers  ; 19,593 / 48,080 ( 41 % )                            ;
-; Total registers                ; 19870                                               ;
-; Total pins                     ; 312 / 395 ( 79 % )                                  ;
+;     Combinational ALUTs        ; 24,407 / 48,080 ( 51 % )                            ;
+;     Dedicated logic registers  ; 19,547 / 48,080 ( 41 % )                            ;
+; Total registers                ; 19824                                               ;
+; Total pins                     ; 313 / 395 ( 79 % )                                  ;
 ; Total virtual pins             ; 0                                                   ;
 ; Total block memory bits        ; 1,755,244 / 2,528,640 ( 69 % )                      ;
 ; DSP block 9-bit elements       ; 240 / 256 ( 94 % )                                  ;
@@ -266,7 +266,27 @@ applicable agreement for further details.
 ; Fitter                    ; 00:24:30     ; 1.6                     ; 3045 MB             ; 00:34:30                           ;
 ; Assembler                 ; 00:00:14     ; 1.0                     ; 955 MB              ; 00:00:13                           ;
 ; TimeQuest Timing Analyzer ; 00:00:36     ; 1.0                     ; 1663 MB             ; 00:00:37                           ;
-; Total                     ; 02:29:43     ; --                      ; --                  ; 03:25:48                           ;
+; Analysis & Synthesis      ; 00:02:51     ; 1.0                     ; 1304 MB             ; 00:02:50                           ;
+; Partition Merge           ; 00:00:12     ; 1.0                     ; 1190 MB             ; 00:00:11                           ;
+; Fitter                    ; 00:25:44     ; 1.6                     ; 3054 MB             ; 00:36:52                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 951 MB              ; 00:00:13                           ;
+; TimeQuest Timing Analyzer ; 00:00:37     ; 1.0                     ; 1676 MB             ; 00:00:37                           ;
+; Analysis & Synthesis      ; 00:02:39     ; 1.0                     ; 1235 MB             ; 00:02:39                           ;
+; Partition Merge           ; 00:00:10     ; 1.0                     ; 1124 MB             ; 00:00:10                           ;
+; Fitter                    ; 00:26:08     ; 1.6                     ; 2205 MB             ; 00:38:02                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 877 MB              ; 00:00:13                           ;
+; TimeQuest Timing Analyzer ; 00:00:38     ; 1.0                     ; 1419 MB             ; 00:00:38                           ;
+; Analysis & Synthesis      ; 00:02:42     ; 1.0                     ; 1227 MB             ; 00:02:43                           ;
+; Partition Merge           ; 00:00:11     ; 1.0                     ; 1135 MB             ; 00:00:10                           ;
+; Fitter                    ; 00:24:08     ; 1.6                     ; 2124 MB             ; 00:35:14                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 878 MB              ; 00:00:13                           ;
+; TimeQuest Timing Analyzer ; 00:00:37     ; 1.0                     ; 1400 MB             ; 00:00:38                           ;
+; Analysis & Synthesis      ; 00:02:43     ; 1.0                     ; 1245 MB             ; 00:02:43                           ;
+; Partition Merge           ; 00:00:11     ; 1.0                     ; 1122 MB             ; 00:00:11                           ;
+; Fitter                    ; 00:23:58     ; 1.6                     ; 2119 MB             ; 00:34:32                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 881 MB              ; 00:00:13                           ;
+; TimeQuest Timing Analyzer ; 00:00:37     ; 1.0                     ; 1395 MB             ; 00:00:38                           ;
+; Total                     ; 04:24:41     ; --                      ; --                  ; 06:05:28                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -302,6 +322,26 @@ applicable agreement for further details.
 ; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
 ; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
 ; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis      ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Partition Merge           ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter                    ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler                 ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
+; TimeQuest Timing Analyzer ; braydopc2.jlab.org ; Red Hat ; Red Hat    ; x86_64         ;
 +---------------------------+--------------------+---------+------------+----------------+
 
 
@@ -325,6 +365,26 @@ quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 quartus_sta Fpga -c Fpga
 quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
+quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
+quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_sta Fpga -c Fpga
+quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
+quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_sta Fpga -c Fpga
+quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
+quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_sta Fpga -c Fpga
+quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
+quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_sta Fpga -c Fpga
 quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
 quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
 quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga

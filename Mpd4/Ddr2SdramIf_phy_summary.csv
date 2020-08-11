@@ -2,11 +2,11 @@
 "Address Command (Fast Model)",2.810,1.063
 "DQS vs CK (Fast Model)",1.191,1.234
 "Half Rate Address/Command (Fast Model)",8.041,1.063
-"Mimic (Fast Model)",1.624,
+"Mimic (Fast Model)",1.541,
 "Phy (Fast Model)",0.478,0.202
-"Phy Reset (Fast Model)",3.833,0.465
+"Phy Reset (Fast Model)",3.836,0.470
 "Read Capture (Fast Model)",0.478,0.907
-"Read Postamble (Fast Model)",3.090,0.326
+"Read Postamble (Fast Model)",3.047,0.369
 "Read Postamble Enable/Disable (Fast Model)",1.437,0.668
-"Read Resync (Fast Model)",1.682,1.682
+"Read Resync (Fast Model)",1.631,1.631
 "Write (Fast Model)",0.605,0.935

@@ -213,8 +213,8 @@ BEGIN
 
 	alt2gxb_component : alt2gxb
 	GENERIC MAP (
-		cmu_pll_inclock_period => 16000,
-		cmu_pll_loop_filter_resistor_control => 1,
+		cmu_pll_inclock_period => 8000,
+		cmu_pll_loop_filter_resistor_control => 2,
 		digitalreset_port_width => 1,
 		enable_pll_inclk_alt_drive_rx_cru => "true",
 		enable_pll_inclk_drive_rx_cru => "true",
@@ -254,7 +254,7 @@ BEGIN
 		rx_common_mode => "0.9v",
 		rx_cru_pre_divide_by => 1,
 		rx_datapath_protocol => "basic",
-		rx_data_rate => 2500,
+		rx_data_rate => 1250,
 		rx_data_rate_remainder => 0,
 		rx_disable_auto_idle_insertion => "false",
 		rx_enable_bit_reversal => "false",
@@ -283,7 +283,7 @@ BEGIN
 		tx_analog_power => "1.2v",
 		tx_channel_width => 16,
 		tx_common_mode => "0.6v",
-		tx_data_rate => 2500,
+		tx_data_rate => 1250,
 		tx_data_rate_remainder => 0,
 		tx_enable_bit_reversal => "false",
 		tx_enable_idle_selection => "false",
@@ -336,14 +336,14 @@ END SYN;
 -- Retrieval info: PRIVATE: RECONFIG_SUBPROTOCOL STRING "none"
 -- Retrieval info: PRIVATE: RX_ENABLE_DC_COUPLING STRING "false"
 -- Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
--- Retrieval info: PRIVATE: WIZ_DATA_RATE STRING "2500"
+-- Retrieval info: PRIVATE: WIZ_DATA_RATE STRING "1250"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INCLK_FREQ_ARRAY STRING "100 100"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_A STRING "2000"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_A_UNIT STRING "Mbps"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_B STRING "100"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_B_UNIT STRING "MHz"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_SELECTION NUMERIC "0"
--- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK0_FREQ STRING "62.5"
+-- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK0_FREQ STRING "125.0"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK0_PROTOCOL STRING "Basic"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK1_FREQ STRING "250"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK1_PROTOCOL STRING "Basic"
@@ -360,18 +360,18 @@ END SYN;
 -- Retrieval info: PRIVATE: WIZ_ENABLE_EQUALIZER_CTRL NUMERIC "0"
 -- Retrieval info: PRIVATE: WIZ_EQUALIZER_CTRL_SETTING NUMERIC "0"
 -- Retrieval info: PRIVATE: WIZ_FORCE_DEFAULT_SETTINGS NUMERIC "0"
--- Retrieval info: PRIVATE: WIZ_INCLK_FREQ STRING "62.5"
--- Retrieval info: PRIVATE: WIZ_INCLK_FREQ_ARRAY STRING "50.0 62.5 78.125 100.0 125.0 156.25 250.0 312.5 500.0"
--- Retrieval info: PRIVATE: WIZ_INPUT_A STRING "2500"
+-- Retrieval info: PRIVATE: WIZ_INCLK_FREQ STRING "125.0"
+-- Retrieval info: PRIVATE: WIZ_INCLK_FREQ_ARRAY STRING "50.0 62.5 78.125 125.0 156.25 250.0 312.5"
+-- Retrieval info: PRIVATE: WIZ_INPUT_A STRING "1250"
 -- Retrieval info: PRIVATE: WIZ_INPUT_A_UNIT STRING "Mbps"
--- Retrieval info: PRIVATE: WIZ_INPUT_B STRING "62.5"
+-- Retrieval info: PRIVATE: WIZ_INPUT_B STRING "125.0"
 -- Retrieval info: PRIVATE: WIZ_INPUT_B_UNIT STRING "MHz"
 -- Retrieval info: PRIVATE: WIZ_INPUT_SELECTION NUMERIC "0"
 -- Retrieval info: PRIVATE: WIZ_PROTOCOL STRING "Basic"
 -- Retrieval info: PRIVATE: WIZ_SUBPROTOCOL STRING "No Loopback"
 -- Retrieval info: PRIVATE: WIZ_WORD_ALIGN_FLIP_PATTERN STRING "0"
--- Retrieval info: CONSTANT: CMU_PLL_INCLOCK_PERIOD NUMERIC "16000"
--- Retrieval info: CONSTANT: CMU_PLL_LOOP_FILTER_RESISTOR_CONTROL NUMERIC "1"
+-- Retrieval info: CONSTANT: CMU_PLL_INCLOCK_PERIOD NUMERIC "8000"
+-- Retrieval info: CONSTANT: CMU_PLL_LOOP_FILTER_RESISTOR_CONTROL NUMERIC "2"
 -- Retrieval info: CONSTANT: DIGITALRESET_PORT_WIDTH NUMERIC "1"
 -- Retrieval info: CONSTANT: ENABLE_PLL_INCLK_ALT_DRIVE_RX_CRU STRING "true"
 -- Retrieval info: CONSTANT: ENABLE_PLL_INCLK_DRIVE_RX_CRU STRING "true"
@@ -410,7 +410,7 @@ END SYN;
 -- Retrieval info: CONSTANT: RX_COMMON_MODE STRING "0.9v"
 -- Retrieval info: CONSTANT: RX_CRU_PRE_DIVIDE_BY NUMERIC "1"
 -- Retrieval info: CONSTANT: RX_DATAPATH_PROTOCOL STRING "basic"
--- Retrieval info: CONSTANT: RX_DATA_RATE NUMERIC "2500"
+-- Retrieval info: CONSTANT: RX_DATA_RATE NUMERIC "1250"
 -- Retrieval info: CONSTANT: RX_DATA_RATE_REMAINDER NUMERIC "0"
 -- Retrieval info: CONSTANT: RX_DISABLE_AUTO_IDLE_INSERTION STRING "false"
 -- Retrieval info: CONSTANT: RX_ENABLE_BIT_REVERSAL STRING "false"
@@ -439,7 +439,7 @@ END SYN;
 -- Retrieval info: CONSTANT: TX_ANALOG_POWER STRING "1.2v"
 -- Retrieval info: CONSTANT: TX_CHANNEL_WIDTH NUMERIC "16"
 -- Retrieval info: CONSTANT: TX_COMMON_MODE STRING "0.6v"
--- Retrieval info: CONSTANT: TX_DATA_RATE NUMERIC "2500"
+-- Retrieval info: CONSTANT: TX_DATA_RATE NUMERIC "1250"
 -- Retrieval info: CONSTANT: TX_DATA_RATE_REMAINDER NUMERIC "0"
 -- Retrieval info: CONSTANT: TX_ENABLE_BIT_REVERSAL STRING "false"
 -- Retrieval info: CONSTANT: TX_ENABLE_IDLE_SELECTION STRING "false"
