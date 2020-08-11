@@ -213,7 +213,7 @@ BEGIN
 
 	alt2gxb_component : alt2gxb
 	GENERIC MAP (
-		cmu_pll_inclock_period => 8000,
+		cmu_pll_inclock_period => 16000,
 		cmu_pll_loop_filter_resistor_control => 2,
 		digitalreset_port_width => 1,
 		enable_pll_inclk_alt_drive_rx_cru => "true",
@@ -343,7 +343,7 @@ END SYN;
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_B STRING "100"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_B_UNIT STRING "MHz"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_INPUT_SELECTION NUMERIC "0"
--- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK0_FREQ STRING "125.0"
+-- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK0_FREQ STRING "62.5"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK0_PROTOCOL STRING "Basic"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK1_FREQ STRING "250"
 -- Retrieval info: PRIVATE: WIZ_DPRIO_REF_CLK1_PROTOCOL STRING "Basic"
@@ -360,17 +360,17 @@ END SYN;
 -- Retrieval info: PRIVATE: WIZ_ENABLE_EQUALIZER_CTRL NUMERIC "0"
 -- Retrieval info: PRIVATE: WIZ_EQUALIZER_CTRL_SETTING NUMERIC "0"
 -- Retrieval info: PRIVATE: WIZ_FORCE_DEFAULT_SETTINGS NUMERIC "0"
--- Retrieval info: PRIVATE: WIZ_INCLK_FREQ STRING "125.0"
+-- Retrieval info: PRIVATE: WIZ_INCLK_FREQ STRING "62.5"
 -- Retrieval info: PRIVATE: WIZ_INCLK_FREQ_ARRAY STRING "50.0 62.5 78.125 125.0 156.25 250.0 312.5"
 -- Retrieval info: PRIVATE: WIZ_INPUT_A STRING "1250"
 -- Retrieval info: PRIVATE: WIZ_INPUT_A_UNIT STRING "Mbps"
--- Retrieval info: PRIVATE: WIZ_INPUT_B STRING "125.0"
+-- Retrieval info: PRIVATE: WIZ_INPUT_B STRING "62.5"
 -- Retrieval info: PRIVATE: WIZ_INPUT_B_UNIT STRING "MHz"
 -- Retrieval info: PRIVATE: WIZ_INPUT_SELECTION NUMERIC "0"
 -- Retrieval info: PRIVATE: WIZ_PROTOCOL STRING "Basic"
 -- Retrieval info: PRIVATE: WIZ_SUBPROTOCOL STRING "No Loopback"
 -- Retrieval info: PRIVATE: WIZ_WORD_ALIGN_FLIP_PATTERN STRING "0"
--- Retrieval info: CONSTANT: CMU_PLL_INCLOCK_PERIOD NUMERIC "8000"
+-- Retrieval info: CONSTANT: CMU_PLL_INCLOCK_PERIOD NUMERIC "16000"
 -- Retrieval info: CONSTANT: CMU_PLL_LOOP_FILTER_RESISTOR_CONTROL NUMERIC "2"
 -- Retrieval info: CONSTANT: DIGITALRESET_PORT_WIDTH NUMERIC "1"
 -- Retrieval info: CONSTANT: ENABLE_PLL_INCLK_ALT_DRIVE_RX_CRU STRING "true"
