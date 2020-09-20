@@ -2,9 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library altera_lib;
---library altera_mf;
---use altera_mf.all;
+library altera_mf;
+use altera_mf.all;
 
 entity mpd_parser_ram_altera is
   port(
