@@ -11,6 +11,7 @@ vlog -vlog01compat -work altera_ip {./Mpd4/CK40_MUX.v}
 vlog -vlog01compat -work altera_ip {./Mpd_Common/ADS5281_Pll.v}
 vlog -vlog01compat -work altera_ip {./Mpd_Common/ApvDataFifo_1024x12.v}
 vlog -vlog01compat -work altera_ip {./Mpd_Common/ApvDataFifo_1024x13.v}
+vlog -vlog01compat -work altera_ip {./Mpd_Common/ApvDataFifo_4096x13.v}
 vlog -vlog01compat -work altera_ip {./Mpd_Common/DdrIn.v}
 vlog -vlog01compat -work altera_ip {./Mpd_Common/DpRam128x12.v}
 vlog -vlog01compat -work altera_ip {./Mpd_Common/Fifo_16x20.v}

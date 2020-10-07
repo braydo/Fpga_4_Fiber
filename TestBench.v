@@ -358,7 +358,7 @@ begin
 
 	$display("***   Event Building test on channel 0,1,2,3");
 //	SingleChannel_EventBuilding_Test(1, use_sdram, 0);	// check use_sdram
-	MultiChannel_EventBuilding_Test_Block(16'h0FFF, 50, 1, 1);	// use_sdram = fast_readout = 1, 20 trigger, 1 us delay (+3us offset) between APV frames, mblt
+	MultiChannel_EventBuilding_Test_Block(16'h0FFF, 5, 1, 1);	// use_sdram = fast_readout = 1, 20 trigger, 1 us delay (+3us offset) between APV frames, mblt
 
 //	SingleChannelSample_Test(8);
 //	SingleChannelSample_Test(8);

@@ -49,7 +49,7 @@ wire [6:0] pedestal_internal_address, threshold_internal_address;
 wire [11:0] pedestal_data, threshold_data, baseline;
 wire [12:0] decoded_frame_data;
 wire [20:0] output_fifo_data;
-wire decoded_event_present, end_threshold_processing, decoded_frame_fifo_rd;
+wire decoded_event_present, end_processing, decoded_frame_fifo_rd;
 wire [11:0] OutputUsedWords, FrameDecoderUsedWords;
 wire OutputFifoEmpty, OutputFifoFull, FrameDecoderFifoEmpty, FrameDecoderFifoFull;
 //reg DisableMode, SampleMode, ApvReadoutMode_Simple, NoProcessorMode;
@@ -63,207 +63,36 @@ begin
 	ApvReadoutMode_Processed <= (DAQ_MODE == 3'b011) ? 1 : 0;
 //	NoProcessorMode <= ApvReadoutMode_Simple | SampleMode;
 
-	FIFO_USED_WORDS <= ApvReadoutMode_Processed ? OutputUsedWords : FrameDecoderUsedWords;
-	FIFO_EMPTY <= ApvReadoutMode_Processed ? OutputFifoEmpty : FrameDecoderFifoEmpty;
-	FIFO_FULL <= ApvReadoutMode_Processed ? OutputFifoFull : FrameDecoderFifoFull;
+	FIFO_USED_WORDS <= FrameDecoderUsedWords;
+	FIFO_EMPTY <= FrameDecoderFifoEmpty;
+	FIFO_FULL <= FrameDecoderFifoFull;
 end
 
-assign pedestal_rd_address = CH_ENABLE ? pedestal_internal_address : RAM_ADDRESS;
-assign threshold_rd_address = CH_ENABLE ? threshold_internal_address : RAM_ADDRESS;
-assign DATA_OUT = CH_ENABLE ? ( ApvReadoutMode_Processed ? output_fifo_data : {8'b0, decoded_frame_data}) :
-	(RE_PEDESTAL_RAM ? {9'b0,pedestal_data} : {9'b0,threshold_data});
-assign DATA_OUT_EVB = output_fifo_data;
+assign DATA_OUT = {8'b0, decoded_frame_data};
+assign DATA_OUT_EVB = DATA_OUT;
 
 SReg ApvFifoFullReg(.CK(CLK), .RSTb(RSTb), .CLR(ALL_CLEAR), .SET(FrameDecoderFifoFull), .OUT(APV_FIFO_FULL_L));
 SReg ProcFifoFullReg(.CK(CLK), .RSTb(RSTb), .CLR(ALL_CLEAR), .SET(OutputFifoFull), .OUT(PROC_FIFO_FULL_L));
-
-DpRam128x12 PedestalRam( .clock(CLK),
-	.data(RAM_DATA_IN), .wraddress(RAM_ADDRESS), .wren(WE_PEDESTAL_RAM),
-	.rdaddress(pedestal_rd_address), .q(pedestal_data));
-
-DpRam128x12 ThresholdRam( .clock(CLK),
-	.data(RAM_DATA_IN), .wraddress(RAM_ADDRESS), .wren(WE_THRESHOLD_RAM),
-	.rdaddress(threshold_rd_address), .q(threshold_data));
 
 ApvReadout ApvFrameDecoder(.RSTb(RSTb), .CLK(CLK_APV), .ENABLE(CH_ENABLE), .ADC_PDATA(ADC_PDATA),
 	.SYNC_PERIOD(SYNC_PERIOD), .SYNCED(SYNCED), .ERROR(),
 	.FIFO_DATA_OUT(decoded_frame_data),
 	.FIFO_EMPTY(FrameDecoderFifoEmpty), .FIFO_FULL(FrameDecoderFifoFull),
-	.FIFO_RD_CLK(CLK), .FIFO_RD(ApvReadoutMode_Processed ? decoded_frame_fifo_rd : FIFO_RD),
+	.FIFO_RD_CLK(CLK), .FIFO_RD(FIFO_RD),
 	.HIGH_ONE(ONE_VAL), .LOW_ZERO(ZERO_VAL), .FIFO_CLEAR(ALL_CLEAR),
 	.DAQ_MODE(DAQ_MODE),
 	.NO_MORE_SPACE_FOR_EVENT(NO_MORE_SPACE),
 	.USED_FIFO_WORDS(FrameDecoderUsedWords),
 	.ONE_MORE_EVENT(decoded_event_present),
-	.PEDESTAL_ADDRESS(pedestal_internal_address), .PEDESTAL_DATA(pedestal_data),
-	.OFFSET(COMMON_OFFSET), .MEAN(baseline), .RD_NEXT_MEAN(end_threshold_processing),
-	.MARKER_CH(MARKER_CH), .SAMPLE_PER_EVENT(SAMPLE_PER_EVENT)
+	.MARKER_CH(MARKER_CH), .SAMPLE_PER_EVENT(SAMPLE_PER_EVENT),
+	.END_FRAME(end_processing)
 	);
 
-BaselineSubtractorAndThresholdCut ThrSub(.RSTb(RSTb & ~ALL_CLEAR), .CLK(CLK),
-	.ENABLE_BASE_SUB(ENABLE_BASE_SUB),
-	.DATA_IN(decoded_frame_data), .FIFO_DATA_RD(decoded_frame_fifo_rd),
-	.EVENT_PRESENT(decoded_event_present), .MEAN(baseline),
-	.THRESHOLD_ADDRESS(threshold_internal_address), .THRESHOLD_DATA(threshold_data),
-	.CH_ID(CH_ID),
-	.FIFO_DATA_OUT(output_fifo_data), .OUT_FIFO_RD(FIFO_RD),
-	.FIFO_EMPTY(OutputFifoEmpty), .FIFO_FULL(OutputFifoFull),
-	.FIFO_USED_WORDS(OutputUsedWords),
-	.END_PROCESSING(end_threshold_processing), .MODULE_ID(MODULE_ID)
-	);
-
-FiveBitCounter EvCounter(.RSTb(RSTb & ~ALL_CLEAR), .CLK(CLK), .INC(end_threshold_processing),
+FiveBitCounter EvCounter(.RSTb(RSTb & ~ALL_CLEAR), .CLK(CLK), .INC(end_processing),
 	.NON_ZERO(EVENT_PRESENT), .DEC(DECR_EVENT_COUNTER)
 	);
 
 endmodule
-
-
-module BaselineSubtractorAndThresholdCut(RSTb, CLK, ENABLE_BASE_SUB,
-	DATA_IN, FIFO_DATA_RD,
-	EVENT_PRESENT, MEAN,
-	THRESHOLD_ADDRESS, THRESHOLD_DATA, CH_ID,
-	FIFO_DATA_OUT, OUT_FIFO_RD, FIFO_EMPTY, FIFO_FULL, FIFO_USED_WORDS,
-	END_PROCESSING, MODULE_ID
-);
-input RSTb, CLK, ENABLE_BASE_SUB;
-input [12:0] DATA_IN;
-output FIFO_DATA_RD;
-input EVENT_PRESENT;
-input [11:0] MEAN;
-output [6:0] THRESHOLD_ADDRESS;
-input [11:0] THRESHOLD_DATA;
-input [3:0] CH_ID;
-output [20:0] FIFO_DATA_OUT;
-input OUT_FIFO_RD;
-output FIFO_EMPTY, FIFO_FULL, END_PROCESSING;
-output [11:0] FIFO_USED_WORDS;
-input [4:0] MODULE_ID;
-
-reg FIFO_DATA_RD;
-reg END_PROCESSING;
-reg [7:0] ThrAddr;
-
-reg fifo_out_wr, active_channel;
-reg [20:0] fifo_data_in;
-reg [7:0] word_count;
-reg [7:0] fsm_status;
-
-wire [11:0] enabled_mean;
-wire [12:0] data_minus_baseline;
-
-assign enabled_mean = ENABLE_BASE_SUB ? MEAN : 12'b0;
-assign FIFO_USED_WORDS[11] = FIFO_FULL;
-assign THRESHOLD_ADDRESS = ThrAddr[6:0];
-
-`ifdef MPD3
-Fifo_1024x21 TempFifo21( .aclr(~RSTb), .clock(CLK),
-	.data(fifo_data_in), .wrreq(fifo_out_wr),
-	.empty(FIFO_EMPTY), .full(FIFO_FULL), .rdreq(OUT_FIFO_RD), .q(FIFO_DATA_OUT),
-	.usedw(FIFO_USED_WORDS[9:0]));
-assign FIFO_USED_WORDS[10] = 0;
-`else
-Fifo_2048x21 TempFifo21( .aclr(~RSTb), .clock(CLK),
-	.data(fifo_data_in), .wrreq(fifo_out_wr),
-	.empty(FIFO_EMPTY), .full(FIFO_FULL), .rdreq(OUT_FIFO_RD), .q(FIFO_DATA_OUT),
-	.usedw(FIFO_USED_WORDS[10:0]));
-`endif
-
-Sub13 BaselineSubtractor(.dataa(DATA_IN), .datab({1'b0,enabled_mean}),
-	.result(data_minus_baseline));
-
-	always @(posedge CLK or negedge RSTb)
-	begin
-		if( RSTb == 0 )
-		begin
-			FIFO_DATA_RD <= 0;
-			ThrAddr <= 0;
-			END_PROCESSING <= 0;
-			fifo_out_wr <= 0;
-			active_channel <= 0;
-			fifo_data_in <= 0;
-			word_count <= 0;
-			fsm_status <= 0;
-		end
-		else
-		begin
-			case( fsm_status )
-				0:	begin
-						FIFO_DATA_RD <= 0;
-						ThrAddr <= 0;
-						END_PROCESSING <= 0;
-						fifo_out_wr <= 0;
-						word_count <= 2;
-						if( EVENT_PRESENT == 1 )
-						begin
-							fifo_data_in <= {1'b0, 1'b0, 1'b0, MEAN[11], DATA_IN, CH_ID};
-							FIFO_DATA_RD <= 1;
-							fifo_out_wr <= 1;
-							fsm_status <= 1;
-						end
-					end
-				1:	begin
-						fifo_data_in <= {1'b0, 1'b1, THRESHOLD_ADDRESS, data_minus_baseline[11:0]};
-						fifo_out_wr <= 0;
-						FIFO_DATA_RD <= 0;
-						fsm_status <= 2;
-					end
-				2:	begin
-						fifo_out_wr <= 0;
-						FIFO_DATA_RD <= 0;
-						if( THRESHOLD_DATA == 12'hFFF )
-							active_channel <= 0;
-						else
-							active_channel <= 1;
-						fsm_status <= 3;
-					end
-				3:	begin
-						fifo_data_in <= {1'b0, 1'b1, THRESHOLD_ADDRESS, data_minus_baseline[11:0]};
-						ThrAddr <= ThrAddr + 1;
-						if( active_channel & (data_minus_baseline >= THRESHOLD_DATA) )
-						begin
-							fifo_out_wr <= 1;
-							word_count <= word_count + 1;
-						end
-						if( ThrAddr != 8'h80 )
-						begin
-							FIFO_DATA_RD <= 1;
-							fsm_status <= 2;
-						end
-						else
-						begin	// Handle trailer coming from preceding stage
-							fifo_out_wr <= 1;
-							fifo_data_in <= {1'b1, 1'b0, 2'b0, MODULE_ID, DATA_IN[11:0]};
-//							fifo_data_in <= {1'b1, 1'b0, 6'b0, DATA_IN};
-							FIFO_DATA_RD <= 0;
-							fsm_status <= 4;
-						end
-					end
-				4:	begin
-						FIFO_DATA_RD <= 0;
-						fifo_out_wr <= 0;
-						fsm_status <= 5;
-						END_PROCESSING <= 1;
-					end
-				5:	begin
-						fifo_out_wr <= 1;
-						fifo_data_in <= {1'b1, 1'b1, MEAN[10:0], word_count};	// Write TRAILER
-						FIFO_DATA_RD <= 1;
-						END_PROCESSING <= 0;
-						fsm_status <= 6;
-					end
-				6:	begin
-						FIFO_DATA_RD <= 0;
-						fifo_out_wr <= 0;
-						fsm_status <= 0;
-					end
-				default: fsm_status <= 0;
-			endcase
-		end
-	end
-
-endmodule
-
 
 
 module FiveBitCounter(RSTb, CLK, INC, NON_ZERO, DEC);

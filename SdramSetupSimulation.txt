@@ -22,7 +22,7 @@ and follow instruction at line 887 and more
 
         output.ac_1t        := '1'; -- default on for FR
 
-        output.poa_lat      := 21;
+        output.poa_lat      := 20;
 
         return output;
 

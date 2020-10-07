@@ -461,6 +461,7 @@ $display("@%0t EventBuilder TRIGGER_TIME2: 0x%0x", $stime, `TRIGGER_TIME2);
 						TimeCounterFifo_Read <= 0;
 						ClearLoopDataCounter <= 0;
 						OutputFifo_Write <= 0;
+						DataWordCount <= 0;
 						DECREMENT_EVENT_COUNT <= 0;
 						if( DISABLE_DEADLOCK == 1 && AtLeastOneChannelHasEvent && FrameWaitCounter < 10'h3FF )		// Revised
 							fsm_status <= 20;
@@ -468,7 +469,7 @@ $display("@%0t EventBuilder TRIGGER_TIME2: 0x%0x", $stime, `TRIGGER_TIME2);
 							fsm_status <= 17;
 						if( ENABLE_EVBUILD == 0 || ALL_CLEAR == 1 )
 							fsm_status <= 0;
-						if( FrameWaitCounter == 10'h3FF )
+						if( DISABLE_DEADLOCK == 1 && FrameWaitCounter == 10'h3FF )
 						begin
 							data_bus <= `BLOCK_TRAILER;
 							fsm_status <= 14;
@@ -495,10 +496,12 @@ $display("@%0t EventBuilder LoopSampleCounter = %d, ChCounter = %d", $stime, Loo
 						data_bus <= `APV_CH_DATA;
 						DataWordCount <= DataWordCount + 1;
 						OutputFifo_Write <= 1;
-						if( ChannelData_a[20:19] == 2'b11 || LoopDataCounter > `MAX_LOOP_DATA ) // Channel Trailer ID
+//						if( ChannelData_a[20:19] == 2'b11 || LoopDataCounter > `MAX_LOOP_DATA ) // Channel Trailer ID
+						if( DataWordCount == 8'd129 ) // Fixed size: APV_HEADER, 128 * APV_DATA, APV_TRAILER (SampleCounter, FrameCounter)
 						begin
 $display("@%0t EventBuilder Channel Trailer[%d]: 0x%0x", $stime, ChCounter, `APV_CH_DATA);
-							DECREMENT_EVENT_COUNT[ChCounterLsb] <= 1;
+//							DECREMENT_EVENT_COUNT[ChCounterLsb] <= 1;
+							DECREMENT_EVENT_COUNT[ChCounterLsb] <= ( LoopSampleCounter == (SAMPLE_PER_EVENT-1) ) ? 1 : 0;
 							DATA_RD[ChCounterLsb] <= 0;
 							fsm_status <= 8;
 						end
@@ -511,7 +514,7 @@ $display("@%0t EventBuilder Channel Trailer[%d]: 0x%0x", $stime, ChCounter, `APV
 				8:	begin
 						DECREMENT_EVENT_COUNT[ChCounterLsb] <= 0;
 						data_bus <= `APV_CH_DATA;
-						DataWordCount <= DataWordCount + 1;
+//						DataWordCount <= DataWordCount + 1;
 						OutputFifo_Write <= 0;
 						LoopSampleCounter <= LoopSampleCounter + 1;
 						FrameWaitCounter <= 0;
