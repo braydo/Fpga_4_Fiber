@@ -588,6 +588,8 @@ Ddr2SdramIf Ddr2SdramIf_inst(
 			.FIBER_HARD_ERR(Fiber_hard_err),	// output
 			.FIBER_FRAME_ERR(Fiber_frame_err),	// output
 			.FIBER_ERR_CNT(Fiber_err_count),	// output
+			
+			.APVENABLE(ApvEnable), // input
 
 //			-- REG_* synchronous to REG_CLK
 			.REG_CLK(Vme_clock),		//  : in std_logic

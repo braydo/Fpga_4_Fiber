@@ -9,6 +9,7 @@ entity mpd_fiber_tx_event is
 		CLK						: in std_logic;
 
 		-- Transceiver Interface
+		APVENABLE				: in std_logic_vector(15 downto 0);
 		CHANNEL_UP				: in std_logic;
 		TX_D						: out std_logic_vector(0 to 15);
 		TX_SRC_RDY_N			: out std_logic;
@@ -31,7 +32,7 @@ end mpd_fiber_tx_event;
 architecture synthesis of mpd_fiber_tx_event is
 	constant SER_TYPE_EVENT	: std_logic_vector(15 downto 0) := x"0002";
 
-	type TX_STATE_TYPE is (TX_RESET, TX_IDLE, TX_EVENT);
+	type TX_STATE_TYPE is (TX_RESET, TX_IDLE, TX_BLKHDR0, TX_BLKHDR1, TX_BLKHDR2, TX_BLKHDR3, TX_EVENT);
 
 	signal TX_STATE				: TX_STATE_TYPE;
 	signal TX_STATE_NEXT			: TX_STATE_TYPE;
@@ -42,10 +43,14 @@ architecture synthesis of mpd_fiber_tx_event is
 	signal EVT_FIFO_DOUT			: std_logic_vector(16 downto 0);
 	signal EVT_FIFO_DOUT_END	: std_logic;
 	signal TX_SOF_N_i				: std_logic;
+	signal DO_BLKHDR2				: std_logic;
+	signal DO_BLKHDR3				: std_logic;
 begin
 
 	TX_SOF_N <= TX_SOF_N_i;
 	TX_D <= SER_TYPE_EVENT when TX_SOF_N_i = '0' else
+	        APVENABLE      when DO_BLKHDR2 = '1' else
+	        x"0000"        when DO_BLKHDR3 = '1' else
 	        EVT_FIFO_DOUT(15 downto 0);
 
 	EVT_FIFO_DOUT_END <= EVT_FIFO_DOUT(16);
@@ -109,6 +114,8 @@ begin
 		TX_SOF_N_i <= '1';
 		TX_EOF_N <= '1';
 		EVT_FIFO_RD <= '0';
+		DO_BLKHDR2 <= '0';
+		DO_BLKHDR3 <= '0';
 
 		case TX_STATE is
 			when TX_RESET =>
@@ -119,10 +126,61 @@ begin
 					TX_SRC_RDY_N <= '0';
 					TX_SOF_N_i <= '0';
 					if TX_DST_RDY_N = '0' then
-						TX_STATE_NEXT <= TX_EVENT;
+						TX_STATE_NEXT <= TX_BLKHDR0;
 					end if;
 				end if;
 
+			
+			when TX_BLKHDR0 =>
+				if (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '0') and (EVT_FIFO_BUSY = '0') then
+					TX_SRC_RDY_N <= '0';
+					if TX_DST_RDY_N = '0' then
+						TX_STATE_NEXT <= TX_BLKHDR1;
+						EVT_FIFO_RD <= '1';
+					end if;
+				elsif (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '1') and (EVT_FIFO_BUSY = '0') then
+					TX_SRC_RDY_N <= '0';
+					TX_EOF_N <= '0';
+					if TX_DST_RDY_N = '0' then
+						TX_STATE_NEXT <= TX_IDLE;
+						EVT_FIFO_RD <= '1';
+					end if;
+				end if;
+			
+			when TX_BLKHDR1 =>
+				if (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '0') and (EVT_FIFO_BUSY = '0') then
+					TX_SRC_RDY_N <= '0';
+					if TX_DST_RDY_N = '0' then
+						TX_STATE_NEXT <= TX_BLKHDR2;
+						EVT_FIFO_RD <= '1';
+					end if;
+				elsif (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '1') and (EVT_FIFO_BUSY = '0') then
+					TX_SRC_RDY_N <= '0';
+					TX_EOF_N <= '0';
+					if TX_DST_RDY_N = '0' then
+						TX_STATE_NEXT <= TX_IDLE;
+						EVT_FIFO_RD <= '1';
+					end if;
+				end if;
+			
+			when TX_BLKHDR2 =>
+				if EVT_FIFO_BUSY = '0' then
+					TX_SRC_RDY_N <= '0';
+					if TX_DST_RDY_N = '0' then
+						TX_STATE_NEXT <= TX_BLKHDR3;
+						DO_BLKHDR2 <= '1';
+					end if;
+				end if;
+
+			when TX_BLKHDR3 =>
+				if EVT_FIFO_BUSY = '0' then
+					TX_SRC_RDY_N <= '0';
+					if TX_DST_RDY_N = '0' then
+						TX_STATE_NEXT <= TX_EVENT;
+						DO_BLKHDR3 <= '1';
+					end if;
+				end if;
+				
 			when TX_EVENT =>
 				if (EVT_FIFO_EMPTY = '0') and (EVT_FIFO_DOUT_END = '0') and (EVT_FIFO_BUSY = '0') then
 					TX_SRC_RDY_N <= '0';

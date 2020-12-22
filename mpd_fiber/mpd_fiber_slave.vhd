@@ -9,6 +9,7 @@ entity mpd_fiber_slave is
 		CLK						: in std_logic;
 		RESET						: in std_logic;
 
+		APVENABLE				: in std_logic_vector(15 downto 0);
 		CHANNEL_UP				: in std_logic;
 
 		TX_D						: out std_logic_vector(0 to 15);
@@ -46,6 +47,7 @@ architecture synthesis of mpd_fiber_slave is
 			CLK						: in std_logic;
 
 			-- Transceiver Interface
+			APVENABLE				: in std_logic_vector(15 downto 0);
 			CHANNEL_UP				: in std_logic;
 			TX_D						: out std_logic_vector(0 to 15);
 			TX_SRC_RDY_N			: out std_logic;
@@ -172,6 +174,7 @@ begin
 	mpd_fiber_tx_event_inst: mpd_fiber_tx_event
 		port map(
 			CLK					=> CLK,
+			APVENABLE			=> APVENABLE,
 			CHANNEL_UP			=> CHANNEL_UP,
 			TX_D					=> TX_D_1,
 			TX_SRC_RDY_N		=> TX_SRC_RDY_N_1,

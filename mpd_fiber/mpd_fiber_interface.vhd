@@ -17,6 +17,8 @@ entity mpd_fiber_interface is
 			FIBER_HARD_ERR			: out std_logic;
 			FIBER_FRAME_ERR		: out std_logic;
 			FIBER_ERR_CNT			: out std_logic_vector(7 downto 0);
+			
+			APVENABLE				: in std_logic_vector(15 downto 0);
 
 			-- Register Access Master->Slave Interface
 			REG_CLK					: in std_logic;
@@ -93,6 +95,7 @@ architecture synthesis of mpd_fiber_interface is
 			CLK						: in std_logic;
 			RESET						: in std_logic;
 
+			APVENABLE				: in std_logic_vector(15 downto 0);
 			CHANNEL_UP				: in std_logic;
 
 			TX_D						: out std_logic_vector(0 to 15);
@@ -190,6 +193,7 @@ begin
 		port map(
 			CLK						=> USER_CLK_i,
 			RESET						=> RESET,
+			APVENABLE				=> APVENABLE,
 			CHANNEL_UP				=> CHANNEL_UP,
 			TX_D						=> TX_D,
 			TX_SRC_RDY_N			=> TX_SRC_RDY_N,
