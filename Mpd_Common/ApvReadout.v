@@ -55,7 +55,6 @@ reg [7:0] frame_counter;
 wire [12:0] data_plus_offset_logic, data_offset_minus_pedestal_logic, data_offset_minus_pedestal_logic_mkr;
 reg [7:0] n_channel;
 reg complete_event;
-wire MeanFifoEmpty;
 reg [4:0] ApvSampleCounter;
 wire [3:0] ApvSampleCounterMinusOne;
 reg ClearApvSampleCounter;
@@ -75,7 +74,7 @@ assign ApvSampleCounterMinusOne = ApvSampleCounter - 1'b1;
 assign header_trailer = HEADER_SEEN ? header : {ApvSampleCounterMinusOne, frame_counter};
 assign logic_one  = (ADC_PDATA > HIGH_ONE) ? 1 : 0;
 assign header = (NO_MORE_SPACE_FOR_EVENT) ? 12'hFFF : {header_sr[10:0], logic_one};
-assign ONE_MORE_EVENT = ~MeanFifoEmpty;
+assign ONE_MORE_EVENT = ~write_fifo_empty;
 
 assign data_offset_minus_pedestal_logic_mkr = (bit_count == MARKER_CH) ? {1'b0,12'hFFF} : {1'b0, ADC_PDATA};
 

@@ -88,6 +88,7 @@ ApvReadout ApvFrameDecoder(.RSTb(RSTb), .CLK(CLK_APV), .ENABLE(CH_ENABLE), .ADC_
 	.END_FRAME(end_processing)
 	);
 
+// Note: end_process is form CLK_APV domain (longer period that CLK) -> resync inside
 FiveBitCounter EvCounter(.RSTb(RSTb & ~ALL_CLEAR), .CLK(CLK), .INC(end_processing),
 	.NON_ZERO(EVENT_PRESENT), .DEC(DECR_EVENT_COUNTER)
 	);
@@ -99,6 +100,7 @@ module FiveBitCounter(RSTb, CLK, INC, NON_ZERO, DEC);
 input RSTb, CLK, INC, DEC;
 output NON_ZERO;
 
+reg INC_Q1, INC_Q2, INC_Q3;
 reg [4:0] cnt;
 reg NON_ZERO;
 
@@ -108,11 +110,17 @@ reg NON_ZERO;
 		begin
 			cnt <= 0;
 			NON_ZERO <= 0;
+			INC_Q1 <= 0;
+			INC_Q2 <= 0;
+			INC_Q3 <= 0;
 		end
 		else
 		begin
+			INC_Q1 <= INC;
+			INC_Q2 <= INC_Q1;
+			INC_Q3 <= INC_Q2;
 			NON_ZERO <= (cnt != 0) ? 1 : 0;
-			if( INC == 1 && cnt != 5'h1F )
+			if( INC_Q2 == 1 && INC_Q3 == 0 && cnt != 5'h1F )
 				cnt <= cnt + 1;
 			else
 				if( DEC == 1 && cnt != 5'h00 )
