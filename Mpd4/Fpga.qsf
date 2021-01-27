@@ -653,6 +653,7 @@ set_instance_assignment -name GLOBAL_SIGNAL "GLOBAL CLOCK" -to ADC_FRAME_CK*
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE EPCS128
 set_global_assignment -name STRATIX_UPDATE_MODE REMOTE
+set_global_assignment -name VERILOG_FILE ../Mpd_Common/Fifo_16x1.v
 set_global_assignment -name QIP_FILE ../Mpd_Common/z_remote.qip
 set_global_assignment -name QIP_FILE ../Mpd_Common/z_asmi.qip
 set_global_assignment -name VERILOG_FILE ../Mpd_Common/RemoteUpdateIf.v
