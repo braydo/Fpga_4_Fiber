@@ -118,10 +118,10 @@ reg NON_ZERO;
 		else
 		begin
 			NON_ZERO <= (cnt != 0) ? 1 : 0;
-			if( INC == 1 && cnt != 5'h1F )
+			if( DEC == 0 && INC == 1 && cnt != 5'h1F )
 				cnt <= cnt + 1;
 			else
-				if( DEC == 1 && cnt != 5'h00 )
+				if( DEC == 1 && INC == 0 && cnt != 5'h00 )
 					cnt <= cnt - 1;
 		end
 	end

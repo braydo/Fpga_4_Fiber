@@ -1,5 +1,5 @@
 Assembler report for Fpga
-Wed Jan 27 10:26:01 2021
+Thu Jan 28 02:29:13 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Jan 27 10:26:01 2021 ;
+; Assembler Status      ; Successful - Thu Jan 28 02:29:13 2021 ;
 ; Revision Name         ; Fpga                                  ;
 ; Top-level Entity Name ; Fpga                                  ;
 ; Family                ; Arria GX                              ;
@@ -96,7 +96,7 @@ applicable agreement for further details.
 +----------------+-------------------+
 ; Device         ; EP1AGX60DF780C6   ;
 ; JTAG usercode  ; 0xFFFFFFFF        ;
-; Checksum       ; 0x022D04DF        ;
+; Checksum       ; 0x023754E8        ;
 +----------------+-------------------+
 
 
@@ -107,7 +107,7 @@ applicable agreement for further details.
 +--------------------+---------------+
 ; Device             ; EPCS128       ;
 ; JTAG usercode      ; 0x00000000    ;
-; Checksum           ; 0xF3DE814D    ;
+; Checksum           ; 0xF3AD536E    ;
 ; Compression Ratio  ; 2             ;
 +--------------------+---------------+
 
@@ -127,13 +127,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
-    Info: Processing started: Wed Jan 27 10:25:54 2021
+    Info: Processing started: Thu Jan 28 02:29:05 2021
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 811 megabytes
-    Info: Processing ended: Wed Jan 27 10:26:02 2021
+    Info: Peak virtual memory: 818 megabytes
+    Info: Processing ended: Thu Jan 28 02:29:13 2021
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 

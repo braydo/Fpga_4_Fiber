@@ -371,8 +371,9 @@ set_multicycle_path -from {VmeSlaveIf:VmeIf|AdCnt:AddressCounter|addr_counter[*]
 set_multicycle_path -from {FiberInterface:FiberInterface_Instance|FiberAddressDecoder:AddressDecoder|CHANNELS_CEb} -to {EightChannels:ApvProcessor_*|ChannelProcessor:Ch*|ApvReadout:ApvFrameDecoder|ApvDataFifo_1024x13:*} -setup -end 2
 set_multicycle_path -from {FiberInterface:FiberInterface_Instance|FiberAddressDecoder:AddressDecoder|CHANNELS_CEb} -to {EightChannels:ApvProcessor_*|ChannelProcessor:Ch*|ApvReadout:ApvFrameDecoder|ApvDataFifo_1024x13:*} -hold -end 2
 
-
-
+set_false_path -from [get_registers {*dcfifo*delayed_wrptr_g[*]}] -to [get_registers {*dcfifo*rs_dgwp*}]
+set_false_path -from [get_registers {*dcfifo*rdptr_g[*]}] -to [get_registers {*dcfifo*ws_dgrp*}]
+set_false_path -from [get_registers {*dcfifo*rdptrrg[*]}] -to [get_registers {*dcfifo*ws_dgrp*}]
   ## TO TEST
   ## set_false_path -from {EightChannels:ApvProcessor_*|ChannelProcessor:Ch*|DpRam128x12:*Ram|altsyncram:altsyncram_component|altsyncram_sso1:auto_generated|ram*} -to {EightChannels:ApvProcessor_*|ChannelProcessor:Ch*|ApvReadout:ApvFrameDecoder|fifo_data_in[*]}
   ## set_false_path -from {EightChannels:ApvProcessor_*|ChannelProcessor:Ch*|DpRam128x12:*Ram|altsyncram:altsyncram_component|altsyncram_sso1:auto_generated|ram*} -to {EightChannels:ApvProcessor_*|ChannelProcessor:Ch*|ApvReadout:ApvFrameDecoder|accumulator[*]}
