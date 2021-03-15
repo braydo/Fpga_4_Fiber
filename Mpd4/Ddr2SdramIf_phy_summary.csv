@@ -4,9 +4,9 @@
 "Half Rate Address/Command (Fast Model)",8.041,1.063
 "Mimic (Fast Model)",1.627,
 "Phy (Fast Model)",0.478,0.202
-"Phy Reset (Fast Model)",3.874,0.465
+"Phy Reset (Fast Model)",3.828,0.462
 "Read Capture (Fast Model)",0.478,0.907
-"Read Postamble (Fast Model)",3.048,0.368
+"Read Postamble (Fast Model)",3.063,0.353
 "Read Postamble Enable/Disable (Fast Model)",1.437,0.668
-"Read Resync (Fast Model)",1.639,1.639
+"Read Resync (Fast Model)",1.669,1.669
 "Write (Fast Model)",0.605,0.935

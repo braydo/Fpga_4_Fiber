@@ -22,7 +22,8 @@ input RSTb, CLK, ENABLE;
 input [11:0] ADC_PDATA;
 input [7:0] SYNC_PERIOD;
 output SYNCED, ERROR;
-output [12:0] FIFO_DATA_OUT;
+//output [12:0] FIFO_DATA_OUT;
+output [25:0] FIFO_DATA_OUT;
 output FIFO_EMPTY, FIFO_FULL;
 input FIFO_RD_CLK, FIFO_RD;
 input [11:0] HIGH_ONE, LOW_ZERO;
@@ -35,6 +36,7 @@ input [7:0] MARKER_CH;
 input [4:0] SAMPLE_PER_EVENT;
 output END_FRAME;
 
+reg [11:0] ADC_PDATA_REG;
 reg END_FRAME, HEADER_SEEN;
 reg fifo_write, data_frame, analog_data;
 reg [7:0] fsm_status;
@@ -45,7 +47,9 @@ reg logic_one_reg, logic_zero_reg;
 wire logic_one;
 wire true_synced;
 reg [12:0] fifo_data_in;
-wire [`DATA_FIFO_MSB_ADDR:0] fifo_used_word_wr, usedwrd;
+//wire [`DATA_FIFO_MSB_ADDR:0] fifo_used_word_wr, usedwrd;
+wire [`DATA_FIFO_MSB_ADDR:0] fifo_used_word_wr;
+wire [`DATA_FIFO_MSB_ADDR-1:0] usedwrd;
 wire write_fifo_empty, write_fifo_full;
 reg apv_mode, sample_mode;
 wire no_more_space_for_sample;
@@ -66,7 +70,7 @@ assign NO_MORE_SPACE_FOR_EVENT = ((`DATA_FIFO_SIZE-fifo_used_word_wr) < `APV_EVE
 assign no_more_space_for_sample = ((`DATA_FIFO_SIZE-fifo_used_word_wr) < `SAMPLE_EVENT_SIZE) ? 1'b1 : 1'b0;
 
 //assign USED_FIFO_WORDS = {FIFO_FULL, usedwrd};
-assign USED_FIFO_WORDS = usedwrd;
+assign USED_FIFO_WORDS = {usedwrd,1'b0};
 
 assign PEDESTAL_ADDRESS = bit_count[6:0];
 
@@ -76,7 +80,7 @@ assign logic_one  = (ADC_PDATA > HIGH_ONE) ? 1 : 0;
 assign header = (NO_MORE_SPACE_FOR_EVENT) ? 12'hFFF : {header_sr[10:0], logic_one};
 assign ONE_MORE_EVENT = ~write_fifo_empty;
 
-assign data_offset_minus_pedestal_logic_mkr = (bit_count == MARKER_CH) ? {1'b0,12'hFFF} : {1'b0, ADC_PDATA};
+assign data_offset_minus_pedestal_logic_mkr = (bit_count == MARKER_CH) ? {1'b0,12'hFFF} : {1'b0, ADC_PDATA_REG};
 
 SyncMachine SyncDetector(.RSTb(RSTb), .CLK(CLK), .ENABLE(ENABLE),
 	.ONE(logic_one_reg), .ZERO(logic_zero_reg), .DATA_FRAME(data_frame), .PERIOD(SYNC_PERIOD),
@@ -84,7 +88,8 @@ SyncMachine SyncDetector(.RSTb(RSTb), .CLK(CLK), .ENABLE(ENABLE),
 
 
 //ApvDataFifo_1024x13 DataFifo(
-ApvDataFifo_4096x13 DataFifo(
+//ApvDataFifo_4096x13 DataFifo(
+ApvDataFifo_4096x13_26 DataFifo(
 	.aclr(FIFO_CLEAR),
 	.data(fifo_data_in),
 	.rdclk(FIFO_RD_CLK),
@@ -102,6 +107,7 @@ ApvDataFifo_4096x13 DataFifo(
 // Synchronizer
 always @(posedge CLK)
 begin
+	ADC_PDATA_REG <= ADC_PDATA;
 	apv_mode <= (DAQ_MODE == 3'b001 || DAQ_MODE == 3'b011) ? 1 : 0;	// Simple or Processed
 	sample_mode <= (DAQ_MODE == 3'b010) ? 1 : 0;
 	logic_one_reg  <= (ADC_PDATA > HIGH_ONE) ? 1 : 0;
@@ -210,7 +216,7 @@ begin
 					fsm_status <= 4;
 				end
 			   end
-			4: begin
+			4: begin // Write original header
 				bit_count <= 0;
 				HEADER_SEEN <= 0;
 				if( NO_MORE_SPACE_FOR_EVENT == 0 )
@@ -218,9 +224,18 @@ begin
 					complete_event <= 1;
 					fifo_write <= 1;
 				end
+				fsm_status <= 41;
+			   end
+		
+			// Write old trailed here (to ensure 2 word packing on samples are aligned 0+1, 2+3, ...
+			// remove old trailer to send even number samples per frame
+			// need to add extra delay analog APV data into FIFO due to this extra stage...
+			41: begin
+				bit_count <= 0;
 				analog_data <= 1;
 				fsm_status <= 5;
 			   end
+				
 			5: begin	// Write 128 analog data words
 				bit_count <= bit_count + 1;
 				fsm_status <= 6;
@@ -234,14 +249,10 @@ begin
 //					END_FRAME <= 1;
 					END_FRAME <= (ApvSampleCounter == SAMPLE_PER_EVENT) ? 1 : 0;
 					analog_data <= 0;
-					fsm_status <= 7;
+					ClearApvSampleCounter <= 1;
+					data_frame <= 0;
+					fsm_status <= 0;
 				end
-			   end
-			7: begin	// Write trailer = {sample_counter,frame_counter}
-				END_FRAME <= 0;
-				ClearApvSampleCounter <= 1;
-				data_frame <= 0;
-				fsm_status <= 0;
 			   end
 
 // Store data until FIFO full and wait for FIFO empty to restart

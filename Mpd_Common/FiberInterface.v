@@ -248,7 +248,8 @@ module EvtHandler(input CLK, input RSTb, input ENABLE,
 	assign EVT_FIFO_END  = WR_END;
 	assign OUT_FIFO_WR   = ~OUT_FIFO_FULL & (~IN_FIFO_EMPTY | WR_END) & ENABLE;
 	assign IN_FIFO_RD    = ~OUT_FIFO_FULL & ~IN_FIFO_EMPTY & ~WR_END & ENABLE;
-	assign block_trailer = (EVB_DATA[23:20] == {3'h1, 1'b0}) ? 1 : 0;	// 24 bit format
+//	assign block_trailer = (EVB_DATA[23:20] == {3'h1, 1'b0}) ? 1 : 0;	// 24 bit format
+	assign block_trailer = (EVB_DATA[31:27] == {1'b1, 4'h1}) ? 1 : 0;	// 32 bit format
 		
 	always @(posedge CLK or negedge RSTb)
 	begin

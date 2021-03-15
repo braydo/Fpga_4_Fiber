@@ -152,11 +152,11 @@ output SPARE_CLK_TTL;	// 2.5 V clock
 	wire [31:0] IoConfig, TrigGenConfig, ReadoutConfig;
 	wire [2:0] TrigMode, ReadoutMode;
 	wire [7:0] ApvSyncPeriod;
-	wire [20:0] ApvFifoData0, ApvFifoData1, ApvFifoData2, ApvFifoData3,
+	wire [25:0] ApvFifoData0, ApvFifoData1, ApvFifoData2, ApvFifoData3,
 		ApvFifoData4, ApvFifoData5, ApvFifoData6, ApvFifoData7,
 		ApvFifoData8, ApvFifoData9, ApvFifoData10, ApvFifoData11,
 		ApvFifoData12, ApvFifoData13, ApvFifoData14, ApvFifoData15;
-	wire [20:0] EvbData0, EvbData1, EvbData2, EvbData3, EvbData4, EvbData5, EvbData6, EvbData7,
+	wire [25:0] EvbData0, EvbData1, EvbData2, EvbData3, EvbData4, EvbData5, EvbData6, EvbData7,
 		EvbData8, EvbData9, EvbData10, EvbData11, EvbData12, EvbData13, EvbData14, EvbData15;
 	wire [11:0] one_threshold, zero_threshold;
 
@@ -193,7 +193,7 @@ output SPARE_CLK_TTL;	// 2.5 V clock
 	wire [11:0] common_offset;
 	wire en_baseline_subtraction;
 	wire Enable_EventBuilder, EventBuilder_Read;
-	wire [23:0] EvBuilderDataOut;
+	wire [31:0] EvBuilderDataOut;
 	wire EventBuilder_Empty, EventBuilder_Full;
 	wire [11:0] EventBuilder_Wc;
 	wire [23:0] EventBuilder_EvCnt;
@@ -517,7 +517,7 @@ FastSdramFifoIf SdramFifoHandler(.RSTb(RSTb_sync), .CLK(Vme_clock),
 	.SDRAM_WORD_COUNT(Sdram_Fifo_WordCount), .SDRAM_OVERRUN(Sdram_Fifo_Overrun),
 	.USER_RE(Sdram_Fifo_Re), .USER_DATA(Sdram_Fifo_Output_Data),
 	.USER_64BIT(Data64Bit), .PACK_DATA(Pack24BitData),
-	.RD_EVB(Sdram_Fifo_Evb_rd), .WC_EVB(EventBuilder_Wc),.DATA_EVB(EvBuilderDataOut),
+	.RD_EVB(Sdram_Fifo_Evb_rd), .WC_EVB(EventBuilder_Wc),.DATA_EVB(EvBuilderDataOut[23:0]),
 	.EMPTY_EVB(EventBuilder_Empty), .FULL_EVB(EventBuilder_Full),
 	.OUTPUT_FIFO_EMPTY(Output_Fifo_Empty), .OUTPUT_FIFO_FULL(Output_Fifo_Full),
 	.OUTPUT_FIFO_WC(Output_Fifo_Wc),
@@ -640,7 +640,7 @@ Ddr2SdramIf Ddr2SdramIf_inst(
 		.EVT_FIFO_EMPTY(EventBuilder_Empty),	// input, form Output FIFO Buffer
 
 // Local Interface syncronous with CLK
-		.EVB_DATA({8'h0,EvBuilderDataOut}),	// input
+		.EVB_DATA(EvBuilderDataOut),	// input
 		.FIBER_USER_REb(Fiber_user_reB),	// output
 		.FIBER_USER_WEb(Fiber_user_weB),	// output
 		.FIBER_USER_OEb(Fiber_user_oeB),	// output
@@ -962,7 +962,7 @@ FifoIf DebugFifoIf(.FIFO_RD(ApvFifo_read),
 	.MISSED_TRIGGER(missing_trigger_count), .INCOMING_TRIGGER_CNT(incoming_trigger_count),
 	.WE_PED_RAM(we_ped_ram), .RE_PED_RAM(re_ped_ram),
 	.WE_THR_RAM(we_thr_ram), //.RE_THR_RAM(re_thr_ram),
-	.EV_BUILDER_DATA_OUT(EvBuilderDataOut), .EV_BUILDER_ENABLE(Enable_EventBuilder),
+	.EV_BUILDER_DATA_OUT(EvBuilderDataOut[23:0]), .EV_BUILDER_ENABLE(Enable_EventBuilder),
 	.EV_BUILDER_FIFO_EMPTY(EventBuilder_Empty), .EV_BUILDER_FIFO_FULL(EventBuilder_Full),
 	.EV_BUILDER_FIFO_WC({4'h0,EventBuilder_Wc}),
 	.EV_BUILDER_EV_CNT(EventBuilder_EvCnt), .EV_BUILDER_BLOCK_CNT(EventBuilder_BlockCnt), .OBUF_BLOCK_CNT(Obuf_BlockCnt),

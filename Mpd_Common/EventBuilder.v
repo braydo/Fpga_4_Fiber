@@ -83,17 +83,18 @@ BLOCK_TRAILER
 // BlockWordCounter[19:0], EventWordCounter[11:0], EventCounter[19:0]
 // MODULE_ID[4:0], EVENT_PER_BLOCK[7:0]
 
-//`define SIZE_32
+`define SIZE_32
 
 `ifdef SIZE_32
 // Original 32-bit definition, compliant with Jlab DAQ (hope)
-`define BLOCK_HEADER	{1'b1, 4'h0, MODULE_ID, 3'b0, EVENT_PER_BLOCK, BLOCK_CNT[10:0]}
+`define BLOCK_HEADER	{1'b1, 4'h0, MODULE_ID, 3'b0, EVENT_PER_BLOCK, 3'b0, BLOCK_CNT[7:0]}
 `define BLOCK_TRAILER	{1'b1, 4'h1, MODULE_ID, 2'b0, BlockWordCounter}
 `define EVENT_HEADER	{1'b1, 4'h2, 7'b0, EventCounterFifo_Data}
 `define TRIGGER_TIME1	{1'b1, 4'h3, 3'b0, TimeCounterFifo_Data[47:24]}
 `define TRIGGER_TIME2	{1'b0, 4'h0, 3'b0, TimeCounterFifo_Data[23:0]}	// why {1'b0, 4'h0, ...}? should be {1'b0, 4'h3, ...}!
-`define APV_CH_DATA		{1'b1, 4'h4, 3'b0, 3'b000, ChannelData_a}	// ChannelData[23:21] = 3'b000
-`define EVENT_TRAILER	{1'b1, 4'h5, 3'b0, EventWordCounter, 4'b0, TRIGGER_TIME_FIFO}
+`define APV_CH_HEADER   {1'b1, 4'h4, ChCounterLsb[3:0], ChannelData_a[23:21],ChannelData_a[20:13], ChannelData_a[11:0]} // ChannelData_a[23:21]=sampleCounter,ChannelData_a[20:13]=frameCounter,ChannelData_a[11:0]=APVheader
+`define APV_CH_DATA		{1'b0, 5'b0, ChannelData_a[25:0]}
+`define EVENT_TRAILER	{1'b1, 4'h5, 3'b0, LoopDataCounter[11:0], 4'b0, TRIGGER_TIME_FIFO}
 `define DATA_NOT_VALID	{1'b1, 4'hE, 27'b0}
 `define FILLER_WORD		{1'b1, 4'hF, 27'b0}
 `else
@@ -104,7 +105,7 @@ BLOCK_TRAILER
 `define EVENT_HEADER	{3'h2, 1'b0, EventCounterFifo_Data}
 `define TRIGGER_TIME1	{3'h3, 1'b0, TimeCounterFifo_Data[39:20]}
 `define TRIGGER_TIME2	{3'h3, 1'b1, TimeCounterFifo_Data[19:0]}
-`define APV_CH_DATA		{3'h4, ChannelData_a}
+`define APV_CH_DATA		{3'h4, ChannelData_a[20:0]}
 `define EVENT_TRAILER	{3'h5, 1'b0, LoopDataCounter[11:0], TRIGGER_TIME_FIFO}
 `define DATA_NOT_VALID	{3'h6, 21'b0}
 `define FILLER_WORD		{3'h7, 21'b0}
@@ -133,8 +134,8 @@ input ENABLE_EVBUILD;
 input [7:0] TRIGGER_TIME_FIFO;
 output TRIGGER_TIME_FIFO_RD;
 input DISABLE_DEADLOCK;
-input [20:0] CH_DATA0, CH_DATA1, CH_DATA2, CH_DATA3, CH_DATA4, CH_DATA5, CH_DATA6, CH_DATA7;
-input [20:0] CH_DATA8, CH_DATA9, CH_DATA10, CH_DATA11, CH_DATA12, CH_DATA13, CH_DATA14, CH_DATA15;
+input [25:0] CH_DATA0, CH_DATA1, CH_DATA2, CH_DATA3, CH_DATA4, CH_DATA5, CH_DATA6, CH_DATA7;
+input [25:0] CH_DATA8, CH_DATA9, CH_DATA10, CH_DATA11, CH_DATA12, CH_DATA13, CH_DATA14, CH_DATA15;
 output [15:0] DATA_RD;
 input [15:0] EVENT_PRESENT;
 output [15:0] DECREMENT_EVENT_COUNT;
@@ -165,10 +166,10 @@ reg [7:0] LoopEventCounter;
 reg [4:0] LoopSampleCounter;
 
 reg [7:0] fsm_status;
-//reg [31:0] data_bus;
-reg [23:0] data_bus;
+reg [31:0] data_bus;
+//reg [23:0] data_bus;
 reg [11:0] DataWordCount;
-reg [20:0] ChannelData_a;
+reg [25:0] ChannelData_a;
 
 wire AllEnabledChannelsHaveEvent;
 reg EventCounterFifo_Read, TimeCounterFifo_Read, OutputFifo_Write;
@@ -493,11 +494,12 @@ $display("@%0t EventBuilder LoopSampleCounter = %d, ChCounter = %d", $stime, Loo
 					end
 				7:	begin	// Main copying loop
 //$display("@%0t EventBuilder APV Data: 0x%0x", $stime, `APV_CH_DATA);
-						data_bus <= `APV_CH_DATA;
+						data_bus <= (DataWordCount > 0) ? `APV_CH_DATA : `APV_CH_HEADER;
 						DataWordCount <= DataWordCount + 1;
 						OutputFifo_Write <= 1;
 //						if( ChannelData_a[20:19] == 2'b11 || LoopDataCounter > `MAX_LOOP_DATA ) // Channel Trailer ID
-						if( DataWordCount == 8'd129 ) // Fixed size: APV_HEADER, 128 * APV_DATA, APV_TRAILER (SampleCounter, FrameCounter)
+//						if( DataWordCount == 8'd129 ) // Fixed size: APV_HEADER, 128 * APV_DATA, APV_TRAILER (SampleCounter, FrameCounter)
+						if( DataWordCount == 8'd64 ) //  Fixed size: APV_HEADER, APV_TRAILER (SampleCounter, FrameCounter), 128 * APV_DATA => double packed
 						begin
 $display("@%0t EventBuilder Channel Trailer[%d]: 0x%0x", $stime, ChCounter, `APV_CH_DATA);
 //							DECREMENT_EVENT_COUNT[ChCounterLsb] <= 1;

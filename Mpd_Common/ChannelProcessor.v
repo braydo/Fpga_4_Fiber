@@ -24,8 +24,8 @@ input [3:0] CH_ID;
 input [7:0] SYNC_PERIOD;
 input [6:0] RAM_ADDRESS;
 input [11:0]  RAM_DATA_IN;
-output [20:0] DATA_OUT;
-output [20:0] DATA_OUT_EVB;
+output [25:0] DATA_OUT;
+output [25:0] DATA_OUT_EVB;
 input WE_PEDESTAL_RAM, WE_THRESHOLD_RAM, RE_PEDESTAL_RAM;//, RE_THRESHOLD_RAM;
 input FIFO_RD;
 output [11:0] FIFO_USED_WORDS;
@@ -47,7 +47,7 @@ reg FIFO_EMPTY, FIFO_FULL;
 wire [6:0] pedestal_rd_address, threshold_rd_address;
 wire [6:0] pedestal_internal_address, threshold_internal_address;
 wire [11:0] pedestal_data, threshold_data, baseline;
-wire [12:0] decoded_frame_data;
+wire [25:0] decoded_frame_data;
 wire [20:0] output_fifo_data;
 wire decoded_event_present, end_processing, decoded_frame_fifo_rd;
 wire [11:0] OutputUsedWords, FrameDecoderUsedWords;
@@ -69,8 +69,8 @@ begin
 	FIFO_FULL <= FrameDecoderFifoFull;
 end
 
-assign DATA_OUT = {8'b0, decoded_frame_data};
-assign DATA_OUT_EVB = DATA_OUT;
+assign DATA_OUT = decoded_frame_data;
+assign DATA_OUT_EVB = decoded_frame_data;
 assign aclr = ~RSTb | ALL_CLEAR;	
 assign rdreq = ~rdempty;
 
@@ -92,7 +92,7 @@ ApvReadout ApvFrameDecoder(.RSTb(RSTb), .CLK(CLK_APV), .ENABLE(CH_ENABLE), .ADC_
 	);
 
 // Note: end_process is form CLK_APV domain (longer period that CLK) -> resync inside
-Fifo_16x1 inc_resync(.aclr(aclr), .data(0), .rdclk(CLK), .rdreq(rdreq), .wrclk(CLK_APV), .wrreq(end_processing), .q(), .rdempty(rdempty), .wrfull());
+Fifo_16x1 inc_resync(.aclr(aclr), .data(1'b0), .rdclk(CLK), .rdreq(rdreq), .wrclk(CLK_APV), .wrreq(end_processing), .q(), .rdempty(rdempty), .wrfull());
 	
 FiveBitCounter EvCounter(.RSTb(RSTb & ~ALL_CLEAR), .CLK(CLK), .INC(rdreq),
 	.NON_ZERO(EVENT_PRESENT), .DEC(DECR_EVENT_COUNTER)
@@ -161,10 +161,10 @@ input [7:0] SYNC_PERIOD;
 output [7:0] SYNCED;
 input [11:0] COMMON_OFFSET;
 input BANK_ID;
-output [20:0] FIFO_DATA_OUT0, FIFO_DATA_OUT1, FIFO_DATA_OUT2, FIFO_DATA_OUT3;
-output [20:0] FIFO_DATA_OUT4, FIFO_DATA_OUT5, FIFO_DATA_OUT6, FIFO_DATA_OUT7;
-output [20:0] DATA_TO_EVB0, DATA_TO_EVB1, DATA_TO_EVB2, DATA_TO_EVB3;
-output [20:0] DATA_TO_EVB4, DATA_TO_EVB5, DATA_TO_EVB6, DATA_TO_EVB7;
+output [25:0] FIFO_DATA_OUT0, FIFO_DATA_OUT1, FIFO_DATA_OUT2, FIFO_DATA_OUT3;
+output [25:0] FIFO_DATA_OUT4, FIFO_DATA_OUT5, FIFO_DATA_OUT6, FIFO_DATA_OUT7;
+output [25:0] DATA_TO_EVB0, DATA_TO_EVB1, DATA_TO_EVB2, DATA_TO_EVB3;
+output [25:0] DATA_TO_EVB4, DATA_TO_EVB5, DATA_TO_EVB6, DATA_TO_EVB7;
 output [7:0] FIFO_EMPTY, FIFO_FULL;
 input [7:0] FIFO_RD;
 input [11:0] HIGH_ONE, LOW_ZERO;
@@ -360,10 +360,10 @@ input [7:0] SYNC_PERIOD;
 output [7:0] SYNCED;
 input [11:0] COMMON_OFFSET;
 input BANK_ID;
-output [20:0] FIFO_DATA_OUT0, FIFO_DATA_OUT1, FIFO_DATA_OUT2, FIFO_DATA_OUT3;
-output [20:0] FIFO_DATA_OUT4, FIFO_DATA_OUT5, FIFO_DATA_OUT6, FIFO_DATA_OUT7;
-output [20:0] DATA_TO_EVB0, DATA_TO_EVB1, DATA_TO_EVB2, DATA_TO_EVB3;
-output [20:0] DATA_TO_EVB4, DATA_TO_EVB5, DATA_TO_EVB6, DATA_TO_EVB7;
+output [25:0] FIFO_DATA_OUT0, FIFO_DATA_OUT1, FIFO_DATA_OUT2, FIFO_DATA_OUT3;
+output [25:0] FIFO_DATA_OUT4, FIFO_DATA_OUT5, FIFO_DATA_OUT6, FIFO_DATA_OUT7;
+output [25:0] DATA_TO_EVB0, DATA_TO_EVB1, DATA_TO_EVB2, DATA_TO_EVB3;
+output [25:0] DATA_TO_EVB4, DATA_TO_EVB5, DATA_TO_EVB6, DATA_TO_EVB7;
 output [7:0] FIFO_EMPTY, FIFO_FULL;
 input [7:0] FIFO_RD;
 input [11:0] HIGH_ONE, LOW_ZERO;
@@ -554,10 +554,10 @@ module FifoIf(FIFO_RD,
 );
 
 output [15:0] FIFO_RD;
-input [20:0] FIFO_DATA_OUT0, FIFO_DATA_OUT1, FIFO_DATA_OUT2, FIFO_DATA_OUT3;
-input [20:0] FIFO_DATA_OUT4, FIFO_DATA_OUT5, FIFO_DATA_OUT6, FIFO_DATA_OUT7;
-input [20:0] FIFO_DATA_OUT8, FIFO_DATA_OUT9, FIFO_DATA_OUT10, FIFO_DATA_OUT11;
-input [20:0] FIFO_DATA_OUT12, FIFO_DATA_OUT13, FIFO_DATA_OUT14, FIFO_DATA_OUT15;
+input [25:0] FIFO_DATA_OUT0, FIFO_DATA_OUT1, FIFO_DATA_OUT2, FIFO_DATA_OUT3;
+input [25:0] FIFO_DATA_OUT4, FIFO_DATA_OUT5, FIFO_DATA_OUT6, FIFO_DATA_OUT7;
+input [25:0] FIFO_DATA_OUT8, FIFO_DATA_OUT9, FIFO_DATA_OUT10, FIFO_DATA_OUT11;
+input [25:0] FIFO_DATA_OUT12, FIFO_DATA_OUT13, FIFO_DATA_OUT14, FIFO_DATA_OUT15;
 input [11:0] USED_FIFO_WORDS0, USED_FIFO_WORDS1, USED_FIFO_WORDS2, USED_FIFO_WORDS3;
 input [11:0] USED_FIFO_WORDS4, USED_FIFO_WORDS5, USED_FIFO_WORDS6, USED_FIFO_WORDS7;
 input [11:0] USED_FIFO_WORDS8, USED_FIFO_WORDS9, USED_FIFO_WORDS10, USED_FIFO_WORDS11;
@@ -750,56 +750,56 @@ end
 always @(*)
 begin
 	casex( USER_ADDR )
-		16'b0100_0???_????_????: int_data <= EV_BUILDER_ENABLE ? {8'h0, EV_BUILDER_DATA_OUT} : {11'h0, FIFO_DATA_OUT0};	// 0x10000..0x11FFC APV data Ch0
-		16'b0100_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT1};	// 0x12000..0x13FFC APV data Ch1
-		16'b0101_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT2};	// 0x14000..0x15FFC APV data Ch2
-		16'b0101_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT3};	// 0x16000..0x17FFC APV data Ch3
-		16'b0110_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT4};	// 0x18000..0x19FFC APV data Ch4
-		16'b0110_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT5};	// 0x1A000..0x1BFFC APV data Ch5
-		16'b0111_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT6};	// 0x1C000..0x1DFFC APV data Ch6
-		16'b0111_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT7};	// 0x1E000..0x1FFFC APV data Ch7
-		16'b1000_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT8};	// 0x20000..0x21FFC APV data Ch8
-		16'b1000_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT9};	// 0x22000..0x23FFC APV data Ch9
-		16'b1001_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT10};	// 0x24000..0x25FFC APV data Ch10
-		16'b1001_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT11};	// 0x26000..0x27FFC APV data Ch11
-		16'b1010_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT12};	// 0x28000..0x29FFC APV data Ch12
-		16'b1010_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT13} ;	// 0x2A000..0x2BFFC APV data Ch13
-		16'b1011_0???_????_????: int_data <= {11'h0, FIFO_DATA_OUT14};	// 0x2C000..0x2DFFC APV data Ch14
-		16'b1011_1???_????_????: int_data <= {11'h0, FIFO_DATA_OUT15};	// 0x2E000..0x2FFFC APV data Ch15
+		16'b0100_0???_????_????: int_data <= EV_BUILDER_ENABLE ? {8'h0, EV_BUILDER_DATA_OUT} : {6'h0, FIFO_DATA_OUT0};	// 0x10000..0x11FFC APV data Ch0
+		16'b0100_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT1};	// 0x12000..0x13FFC APV data Ch1
+		16'b0101_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT2};	// 0x14000..0x15FFC APV data Ch2
+		16'b0101_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT3};	// 0x16000..0x17FFC APV data Ch3
+		16'b0110_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT4};	// 0x18000..0x19FFC APV data Ch4
+		16'b0110_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT5};	// 0x1A000..0x1BFFC APV data Ch5
+		16'b0111_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT6};	// 0x1C000..0x1DFFC APV data Ch6
+		16'b0111_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT7};	// 0x1E000..0x1FFFC APV data Ch7
+		16'b1000_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT8};	// 0x20000..0x21FFC APV data Ch8
+		16'b1000_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT9};	// 0x22000..0x23FFC APV data Ch9
+		16'b1001_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT10};	// 0x24000..0x25FFC APV data Ch10
+		16'b1001_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT11};	// 0x26000..0x27FFC APV data Ch11
+		16'b1010_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT12};	// 0x28000..0x29FFC APV data Ch12
+		16'b1010_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT13} ;	// 0x2A000..0x2BFFC APV data Ch13
+		16'b1011_0???_????_????: int_data <= {6'h0, FIFO_DATA_OUT14};	// 0x2C000..0x2DFFC APV data Ch14
+		16'b1011_1???_????_????: int_data <= {6'h0, FIFO_DATA_OUT15};	// 0x2E000..0x2FFFC APV data Ch15
 
-		16'b1101_0000_0???_????: int_data <= {11'h0, FIFO_DATA_OUT0};	// 0x34000..0x341FC Ped Ram 0
-		16'b1101_0000_1???_????: int_data <= {11'h0, FIFO_DATA_OUT1};	// 0x34200..0x343FC Ped Ram 1
-		16'b1101_0001_0???_????: int_data <= {11'h0, FIFO_DATA_OUT2};	// 0x34400..0x345FC Ped Ram 2
-		16'b1101_0001_1???_????: int_data <= {11'h0, FIFO_DATA_OUT3};	// 0x34600..0x347FC Ped Ram 3
-		16'b1101_0010_0???_????: int_data <= {11'h0, FIFO_DATA_OUT4};	// 0x34800..0x349FC Ped Ram 4
-		16'b1101_0010_1???_????: int_data <= {11'h0, FIFO_DATA_OUT5};	// 0x34A00..0x34BFC Ped Ram 5
-		16'b1101_0011_0???_????: int_data <= {11'h0, FIFO_DATA_OUT6};	// 0x34C00..0x34DFC Ped Ram 6
-		16'b1101_0011_1???_????: int_data <= {11'h0, FIFO_DATA_OUT7};	// 0x34E00..0x34FFC Ped Ram 7
-		16'b1101_0100_0???_????: int_data <= {11'h0, FIFO_DATA_OUT8};	// 0x35000..0x351FC Ped Ram 8
-		16'b1101_0100_1???_????: int_data <= {11'h0, FIFO_DATA_OUT9};	// 0x35200..0x353FC Ped Ram 9
-		16'b1101_0101_0???_????: int_data <= {11'h0, FIFO_DATA_OUT10};	// 0x35400..0x355FC Ped Ram 10
-		16'b1101_0101_1???_????: int_data <= {11'h0, FIFO_DATA_OUT11};	// 0x35600..0x357FC Ped Ram 11
-		16'b1101_0110_0???_????: int_data <= {11'h0, FIFO_DATA_OUT12};	// 0x35800..0x359FC Ped Ram 12
-		16'b1101_0110_1???_????: int_data <= {11'h0, FIFO_DATA_OUT13};	// 0x35A00..0x35BFC Ped Ram 13
-		16'b1101_0111_0???_????: int_data <= {11'h0, FIFO_DATA_OUT14};	// 0x35C00..0x35DFC Ped Ram 14
-		16'b1101_0111_1???_????: int_data <= {11'h0, FIFO_DATA_OUT15};	// 0x35E00..0x35FFC Ped Ram 15
+		16'b1101_0000_0???_????: int_data <= {6'h0, FIFO_DATA_OUT0};	// 0x34000..0x341FC Ped Ram 0
+		16'b1101_0000_1???_????: int_data <= {6'h0, FIFO_DATA_OUT1};	// 0x34200..0x343FC Ped Ram 1
+		16'b1101_0001_0???_????: int_data <= {6'h0, FIFO_DATA_OUT2};	// 0x34400..0x345FC Ped Ram 2
+		16'b1101_0001_1???_????: int_data <= {6'h0, FIFO_DATA_OUT3};	// 0x34600..0x347FC Ped Ram 3
+		16'b1101_0010_0???_????: int_data <= {6'h0, FIFO_DATA_OUT4};	// 0x34800..0x349FC Ped Ram 4
+		16'b1101_0010_1???_????: int_data <= {6'h0, FIFO_DATA_OUT5};	// 0x34A00..0x34BFC Ped Ram 5
+		16'b1101_0011_0???_????: int_data <= {6'h0, FIFO_DATA_OUT6};	// 0x34C00..0x34DFC Ped Ram 6
+		16'b1101_0011_1???_????: int_data <= {6'h0, FIFO_DATA_OUT7};	// 0x34E00..0x34FFC Ped Ram 7
+		16'b1101_0100_0???_????: int_data <= {6'h0, FIFO_DATA_OUT8};	// 0x35000..0x351FC Ped Ram 8
+		16'b1101_0100_1???_????: int_data <= {6'h0, FIFO_DATA_OUT9};	// 0x35200..0x353FC Ped Ram 9
+		16'b1101_0101_0???_????: int_data <= {6'h0, FIFO_DATA_OUT10};	// 0x35400..0x355FC Ped Ram 10
+		16'b1101_0101_1???_????: int_data <= {6'h0, FIFO_DATA_OUT11};	// 0x35600..0x357FC Ped Ram 11
+		16'b1101_0110_0???_????: int_data <= {6'h0, FIFO_DATA_OUT12};	// 0x35800..0x359FC Ped Ram 12
+		16'b1101_0110_1???_????: int_data <= {6'h0, FIFO_DATA_OUT13};	// 0x35A00..0x35BFC Ped Ram 13
+		16'b1101_0111_0???_????: int_data <= {6'h0, FIFO_DATA_OUT14};	// 0x35C00..0x35DFC Ped Ram 14
+		16'b1101_0111_1???_????: int_data <= {6'h0, FIFO_DATA_OUT15};	// 0x35E00..0x35FFC Ped Ram 15
 
-		16'b1101_1000_0???_????: int_data <= {11'h0, FIFO_DATA_OUT0};	// 0x36000..0x361FC Thr Ram 0
-		16'b1101_1000_1???_????: int_data <= {11'h0, FIFO_DATA_OUT1};	// 0x36200..0x363FC Thr Ram 1
-		16'b1101_1001_0???_????: int_data <= {11'h0, FIFO_DATA_OUT2};	// 0x36400..0x365FC Thr Ram 2
-		16'b1101_1001_1???_????: int_data <= {11'h0, FIFO_DATA_OUT3};	// 0x36600..0x367FC Thr Ram 3
-		16'b1101_1010_0???_????: int_data <= {11'h0, FIFO_DATA_OUT4};	// 0x36800..0x369FC Thr Ram 4
-		16'b1101_1010_1???_????: int_data <= {11'h0, FIFO_DATA_OUT5};	// 0x36A00..0x36BFC Thr Ram 5
-		16'b1101_1011_0???_????: int_data <= {11'h0, FIFO_DATA_OUT6};	// 0x36C00..0x36DFC Thr Ram 6
-		16'b1101_1011_1???_????: int_data <= {11'h0, FIFO_DATA_OUT7};	// 0x36E00..0x36FFC Thr Ram 7
-		16'b1101_1100_0???_????: int_data <= {11'h0, FIFO_DATA_OUT8};	// 0x37000..0x371FC Thr Ram 8
-		16'b1101_1100_1???_????: int_data <= {11'h0, FIFO_DATA_OUT9};	// 0x37200..0x373FC Thr Ram 9
-		16'b1101_1101_0???_????: int_data <= {11'h0, FIFO_DATA_OUT10};	// 0x37400..0x375FC Thr Ram 10
-		16'b1101_1101_1???_????: int_data <= {11'h0, FIFO_DATA_OUT11};	// 0x37600..0x377FC Thr Ram 11
-		16'b1101_1110_0???_????: int_data <= {11'h0, FIFO_DATA_OUT12};	// 0x37800..0x379FC Thr Ram 12
-		16'b1101_1110_1???_????: int_data <= {11'h0, FIFO_DATA_OUT13};	// 0x37A00..0x37BFC Thr Ram 13
-		16'b1101_1111_0???_????: int_data <= {11'h0, FIFO_DATA_OUT14};	// 0x37C00..0x37DFC Thr Ram 14
-		16'b1101_1111_1???_????: int_data <= {11'h0, FIFO_DATA_OUT15};	// 0x37E00..0x37FFC Thr Ram 15
+		16'b1101_1000_0???_????: int_data <= {6'h0, FIFO_DATA_OUT0};	// 0x36000..0x361FC Thr Ram 0
+		16'b1101_1000_1???_????: int_data <= {6'h0, FIFO_DATA_OUT1};	// 0x36200..0x363FC Thr Ram 1
+		16'b1101_1001_0???_????: int_data <= {6'h0, FIFO_DATA_OUT2};	// 0x36400..0x365FC Thr Ram 2
+		16'b1101_1001_1???_????: int_data <= {6'h0, FIFO_DATA_OUT3};	// 0x36600..0x367FC Thr Ram 3
+		16'b1101_1010_0???_????: int_data <= {6'h0, FIFO_DATA_OUT4};	// 0x36800..0x369FC Thr Ram 4
+		16'b1101_1010_1???_????: int_data <= {6'h0, FIFO_DATA_OUT5};	// 0x36A00..0x36BFC Thr Ram 5
+		16'b1101_1011_0???_????: int_data <= {6'h0, FIFO_DATA_OUT6};	// 0x36C00..0x36DFC Thr Ram 6
+		16'b1101_1011_1???_????: int_data <= {6'h0, FIFO_DATA_OUT7};	// 0x36E00..0x36FFC Thr Ram 7
+		16'b1101_1100_0???_????: int_data <= {6'h0, FIFO_DATA_OUT8};	// 0x37000..0x371FC Thr Ram 8
+		16'b1101_1100_1???_????: int_data <= {6'h0, FIFO_DATA_OUT9};	// 0x37200..0x373FC Thr Ram 9
+		16'b1101_1101_0???_????: int_data <= {6'h0, FIFO_DATA_OUT10};	// 0x37400..0x375FC Thr Ram 10
+		16'b1101_1101_1???_????: int_data <= {6'h0, FIFO_DATA_OUT11};	// 0x37600..0x377FC Thr Ram 11
+		16'b1101_1110_0???_????: int_data <= {6'h0, FIFO_DATA_OUT12};	// 0x37800..0x379FC Thr Ram 12
+		16'b1101_1110_1???_????: int_data <= {6'h0, FIFO_DATA_OUT13};	// 0x37A00..0x37BFC Thr Ram 13
+		16'b1101_1111_0???_????: int_data <= {6'h0, FIFO_DATA_OUT14};	// 0x37C00..0x37DFC Thr Ram 14
+		16'b1101_1111_1???_????: int_data <= {6'h0, FIFO_DATA_OUT15};	// 0x37E00..0x37FFC Thr Ram 15
 
 		16'b1100_0000_0000_0000: int_data <= EV_BUILDER_ENABLE ? {EV_BUILDER_EV_CNT[15:0], EV_BUILDER_FIFO_WC} :
 							{20'h0, USED_FIFO_WORDS0};	// 0x30000

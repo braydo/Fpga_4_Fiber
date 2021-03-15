@@ -1,5 +1,5 @@
 Flow report for Fpga
-Thu Jan 28 02:29:36 2021
+Mon Mar 15 16:31:10 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
 
 
@@ -40,20 +40,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +--------------------------------+-----------------------------------------------------+
-; Flow Status                    ; Successful - Thu Jan 28 02:29:13 2021               ;
+; Flow Status                    ; Successful - Mon Mar 15 16:30:35 2021               ;
 ; Quartus II 64-Bit Version      ; 13.0.1 Build 232 06/12/2013 SP 1.78 SJ Full Version ;
 ; Revision Name                  ; Fpga                                                ;
 ; Top-level Entity Name          ; Fpga                                                ;
 ; Family                         ; Arria GX                                            ;
 ; Device                         ; EP1AGX60DF780C6                                     ;
 ; Timing Models                  ; Final                                               ;
-; Logic utilization              ; 51 %                                                ;
-;     Combinational ALUTs        ; 16,185 / 48,080 ( 34 % )                            ;
-;     Dedicated logic registers  ; 17,143 / 48,080 ( 36 % )                            ;
-; Total registers                ; 17420                                               ;
+; Logic utilization              ; 52 %                                                ;
+;     Combinational ALUTs        ; 16,109 / 48,080 ( 34 % )                            ;
+;     Dedicated logic registers  ; 17,188 / 48,080 ( 36 % )                            ;
+; Total registers                ; 17465                                               ;
 ; Total pins                     ; 312 / 395 ( 79 % )                                  ;
 ; Total virtual pins             ; 0                                                   ;
-; Total block memory bits        ; 1,657,324 / 2,528,640 ( 66 % )                      ;
+; Total block memory bits        ; 1,673,708 / 2,528,640 ( 66 % )                      ;
 ; DSP block 9-bit elements       ; 240 / 256 ( 94 % )                                  ;
 ; Total GXB Receiver Channels    ; 1 / 8 ( 13 % )                                      ;
 ; Total GXB Transmitter Channels ; 1 / 8 ( 13 % )                                      ;
@@ -291,7 +291,12 @@ applicable agreement for further details.
 ; Fitter                    ; 00:14:05     ; 1.6                     ; 2215 MB             ; 00:19:43                           ;
 ; Assembler                 ; 00:00:08     ; 1.0                     ; 818 MB              ; 00:00:08                           ;
 ; TimeQuest Timing Analyzer ; 00:00:22     ; 1.0                     ; 1154 MB             ; 00:00:21                           ;
-; Total                     ; 02:02:58     ; --                      ; --                  ; 02:47:51                           ;
+; Analysis & Synthesis      ; 00:02:12     ; 1.0                     ; 1165 MB             ; 00:02:04                           ;
+; Partition Merge           ; 00:00:08     ; 1.0                     ; 1082 MB             ; 00:00:06                           ;
+; Fitter                    ; 00:21:22     ; 1.7                     ; 2280 MB             ; 00:29:38                           ;
+; Assembler                 ; 00:00:11     ; 1.0                     ; 826 MB              ; 00:00:11                           ;
+; TimeQuest Timing Analyzer ; 00:00:31     ; 1.0                     ; 1159 MB             ; 00:00:31                           ;
+; Total                     ; 02:27:22     ; --                      ; --                  ; 03:20:21                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -345,6 +350,11 @@ applicable agreement for further details.
 ; Fitter                    ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
 ; Assembler                 ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
 ; TimeQuest Timing Analyzer ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; Analysis & Synthesis      ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; Partition Merge           ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; Fitter                    ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; Assembler                 ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; TimeQuest Timing Analyzer ; centospc2        ; CentOS Linux ; CentOS Linux ; x86_64         ;
 +---------------------------+------------------+--------------+--------------+----------------+
 
 
@@ -386,6 +396,11 @@ quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
 quartus_sta Fpga -c Fpga
 quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
+quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
+quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_asm --read_settings_files=off --write_settings_files=off Fpga -c Fpga
+quartus_sta Fpga -c Fpga
 quartus_map --read_settings_files=on --write_settings_files=off Fpga -c Fpga
 quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
 quartus_fit --read_settings_files=off --write_settings_files=off Fpga -c Fpga
