@@ -1,5 +1,5 @@
 Partition Merge report for Fpga
-Mon Mar 15 16:08:41 2021
+Sat Apr  3 15:44:28 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
 
 
@@ -40,13 +40,13 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Partition Merge Summary                                                              ;
 +--------------------------------+-----------------------------------------------------+
-; Partition Merge Status         ; Successful - Mon Mar 15 16:08:41 2021               ;
+; Partition Merge Status         ; Successful - Sat Apr  3 15:44:27 2021               ;
 ; Quartus II 64-Bit Version      ; 13.0.1 Build 232 06/12/2013 SP 1.78 SJ Full Version ;
 ; Revision Name                  ; Fpga                                                ;
 ; Top-level Entity Name          ; Fpga                                                ;
 ; Family                         ; Arria GX                                            ;
 ; Logic utilization              ; N/A                                                 ;
-;     Combinational ALUTs        ; 15,907                                              ;
+;     Combinational ALUTs        ; 16,096                                              ;
 ;     Dedicated logic registers  ; 17,420                                              ;
 ; Total registers                ; 17596                                               ;
 ; Total pins                     ; 286                                                 ;
@@ -55,7 +55,7 @@ applicable agreement for further details.
 ; DSP block 9-bit elements       ; 240                                                 ;
 ; Total GXB Receiver Channels    ; 1                                                   ;
 ; Total GXB Transmitter Channels ; 1                                                   ;
-; Total PLLs                     ; 3                                                   ;
+; Total PLLs                     ; 2                                                   ;
 ; Total DLLs                     ; 1                                                   ;
 +--------------------------------+-----------------------------------------------------+
 
@@ -66,8 +66,8 @@ applicable agreement for further details.
 ; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
 +--------------------------------+----------------+-------------------+------------------------+--------------------------------+
 ; Top                            ; User-created   ; Source File       ; Source File            ;                                ;
-; AdcDeser:AdcDeser0             ; User-created   ; Post-Synthesis    ; Post-Synthesis         ; AdcDeser:AdcDeser0             ;
-; AdcDeser:AdcDeser1             ; User-created   ; Post-Synthesis    ; Post-Synthesis         ; AdcDeser:AdcDeser1             ;
+; AdcDeser:AdcDeser0             ; User-created   ; Source File       ; Source File            ; AdcDeser:AdcDeser0             ;
+; AdcDeser:AdcDeser1             ; User-created   ; Source File       ; Source File            ; AdcDeser:AdcDeser1             ;
 ; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
 +--------------------------------+----------------+-------------------+------------------------+--------------------------------+
 
@@ -98,7 +98,7 @@ Note: The Incremental Compilation Advisor can be used to get more detailed recom
 +---------------------------------------+--------+--------------------+--------------------+--------------------------------+
 ; Statistic                             ; Top    ; AdcDeser:AdcDeser0 ; AdcDeser:AdcDeser1 ; hard_block:auto_generated_inst ;
 +---------------------------------------+--------+--------------------+--------------------+--------------------------------+
-; PLL                                   ; 0      ; 0                  ; 0                  ; 3                              ;
+; PLL                                   ; 0      ; 0                  ; 0                  ; 2                              ;
 ; GXB Receiver channel                  ; 0      ; 0                  ; 0                  ; 1                              ;
 ; GXB Transmitter channel               ; 0      ; 0                  ; 0                  ; 1                              ;
 ; Remote update block                   ; 1      ; 0                  ; 0                  ; 0                              ;
@@ -113,23 +113,23 @@ Note: The Incremental Compilation Advisor can be used to get more detailed recom
 ; DSP block 9-bit elements              ; 240    ; 0                  ; 0                  ; 0                              ;
 ;                                       ;        ;                    ;                    ;                                ;
 ; Connections                           ;        ;                    ;                    ;                                ;
-;     -- Input Connections              ; 9685   ; 300                ; 300                ; 42                             ;
+;     -- Input Connections              ; 9685   ; 300                ; 300                ; 40                             ;
 ;     -- Registered Input Connections   ; 8466   ; 299                ; 287                ; 6                              ;
-;     -- Output Connections             ; 642    ; 288                ; 252                ; 9145                           ;
+;     -- Output Connections             ; 640    ; 288                ; 252                ; 9145                           ;
 ;     -- Registered Output Connections  ; 25     ; 288                ; 252                ; 12                             ;
 ;                                       ;        ;                    ;                    ;                                ;
 ; Internal Connections                  ;        ;                    ;                    ;                                ;
-;     -- Total Connections              ; 132651 ; 974                ; 938                ; 9260                           ;
-;     -- Registered Connections         ; 70026  ; 972                ; 924                ; 18                             ;
+;     -- Total Connections              ; 133536 ; 974                ; 938                ; 9256                           ;
+;     -- Registered Connections         ; 69959  ; 972                ; 924                ; 18                             ;
 ;                                       ;        ;                    ;                    ;                                ;
 ; External Connections                  ;        ;                    ;                    ;                                ;
-;     -- Top                            ; 0      ; 588                ; 552                ; 9187                           ;
+;     -- Top                            ; 0      ; 588                ; 552                ; 9185                           ;
 ;     -- AdcDeser:AdcDeser0             ; 588    ; 0                  ; 0                  ; 0                              ;
 ;     -- AdcDeser:AdcDeser1             ; 552    ; 0                  ; 0                  ; 0                              ;
-;     -- hard_block:auto_generated_inst ; 9187   ; 0                  ; 0                  ; 0                              ;
+;     -- hard_block:auto_generated_inst ; 9185   ; 0                  ; 0                  ; 0                              ;
 ;                                       ;        ;                    ;                    ;                                ;
 ; Partition Interface                   ;        ;                    ;                    ;                                ;
-;     -- Input Ports                    ; 75     ; 10                 ; 10                 ; 42                             ;
+;     -- Input Ports                    ; 75     ; 10                 ; 10                 ; 40                             ;
 ;     -- Output Ports                   ; 86     ; 96                 ; 96                 ; 52                             ;
 ;     -- Bidir Ports                    ; 125    ; 0                  ; 0                  ; 0                              ;
 ;                                       ;        ;                    ;                    ;                                ;
@@ -155,26 +155,26 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Resource                                     ; Usage                                                                                                                                                                                                                                                                                                 ;
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Estimated ALUTs Used                         ; 15907                                                                                                                                                                                                                                                                                                 ;
+; Estimated ALUTs Used                         ; 16096                                                                                                                                                                                                                                                                                                 ;
 ; Dedicated logic registers                    ; 17420                                                                                                                                                                                                                                                                                                 ;
 ;                                              ;                                                                                                                                                                                                                                                                                                       ;
-; Estimated ALUTs Unavailable                  ; 101                                                                                                                                                                                                                                                                                                   ;
+; Estimated ALUTs Unavailable                  ; 100                                                                                                                                                                                                                                                                                                   ;
 ;                                              ;                                                                                                                                                                                                                                                                                                       ;
-; Total combinational functions                ; 15907                                                                                                                                                                                                                                                                                                 ;
+; Total combinational functions                ; 16096                                                                                                                                                                                                                                                                                                 ;
 ; Combinational ALUT usage by number of inputs ;                                                                                                                                                                                                                                                                                                       ;
-;     -- 7 input functions                     ; 101                                                                                                                                                                                                                                                                                                   ;
-;     -- 6 input functions                     ; 2480                                                                                                                                                                                                                                                                                                  ;
-;     -- 5 input functions                     ; 2409                                                                                                                                                                                                                                                                                                  ;
-;     -- 4 input functions                     ; 2282                                                                                                                                                                                                                                                                                                  ;
-;     -- <=3 input functions                   ; 8635                                                                                                                                                                                                                                                                                                  ;
+;     -- 7 input functions                     ; 100                                                                                                                                                                                                                                                                                                   ;
+;     -- 6 input functions                     ; 2533                                                                                                                                                                                                                                                                                                  ;
+;     -- 5 input functions                     ; 2464                                                                                                                                                                                                                                                                                                  ;
+;     -- 4 input functions                     ; 2360                                                                                                                                                                                                                                                                                                  ;
+;     -- <=3 input functions                   ; 8639                                                                                                                                                                                                                                                                                                  ;
 ;                                              ;                                                                                                                                                                                                                                                                                                       ;
 ; Combinational ALUTs by mode                  ;                                                                                                                                                                                                                                                                                                       ;
-;     -- normal mode                           ; 12093                                                                                                                                                                                                                                                                                                 ;
-;     -- extended LUT mode                     ; 101                                                                                                                                                                                                                                                                                                   ;
+;     -- normal mode                           ; 12283                                                                                                                                                                                                                                                                                                 ;
+;     -- extended LUT mode                     ; 100                                                                                                                                                                                                                                                                                                   ;
 ;     -- arithmetic mode                       ; 3206                                                                                                                                                                                                                                                                                                  ;
 ;     -- shared arithmetic mode                ; 507                                                                                                                                                                                                                                                                                                   ;
 ;                                              ;                                                                                                                                                                                                                                                                                                       ;
-; Estimated ALUT/register pairs used           ; 22313                                                                                                                                                                                                                                                                                                 ;
+; Estimated ALUT/register pairs used           ; 22438                                                                                                                                                                                                                                                                                                 ;
 ;                                              ;                                                                                                                                                                                                                                                                                                       ;
 ; Total registers                              ; 17596                                                                                                                                                                                                                                                                                                 ;
 ;     -- Dedicated logic registers             ; 17420                                                                                                                                                                                                                                                                                                 ;
@@ -184,16 +184,16 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 ; I/O pins                                     ; 286                                                                                                                                                                                                                                                                                                   ;
 ; Total block memory bits                      ; 1673708                                                                                                                                                                                                                                                                                               ;
 ; DSP block 9-bit elements                     ; 240                                                                                                                                                                                                                                                                                                   ;
-; Total PLLs                                   ; 3                                                                                                                                                                                                                                                                                                     ;
-;     -- PLLs                                  ; 3                                                                                                                                                                                                                                                                                                     ;
+; Total PLLs                                   ; 2                                                                                                                                                                                                                                                                                                     ;
+;     -- PLLs                                  ; 2                                                                                                                                                                                                                                                                                                     ;
 ;                                              ;                                                                                                                                                                                                                                                                                                       ;
 ; Total DLLs                                   ; 1                                                                                                                                                                                                                                                                                                     ;
 ; GXB Receiver channels                        ; 1                                                                                                                                                                                                                                                                                                     ;
 ; GXB Transmitter channels                     ; 1                                                                                                                                                                                                                                                                                                     ;
 ; Maximum fan-out node                         ; Ddr2SdramIf:Ddr2SdramIf_inst|Ddr2SdramIf_controller_phy:Ddr2SdramIf_controller_phy_inst|Ddr2SdramIf_phy:Ddr2SdramIf_phy_inst|Ddr2SdramIf_phy_alt_mem_phy:Ddr2SdramIf_phy_alt_mem_phy_inst|Ddr2SdramIf_phy_alt_mem_phy_clk_reset:clk|Ddr2SdramIf_phy_alt_mem_phy_pll:pll|altpll:altpll_component|_clk0 ;
 ; Maximum fan-out                              ; 7306                                                                                                                                                                                                                                                                                                  ;
-; Total fan-out                                ; 127528                                                                                                                                                                                                                                                                                                ;
-; Average fan-out                              ; 3.70                                                                                                                                                                                                                                                                                                  ;
+; Total fan-out                                ; 128411                                                                                                                                                                                                                                                                                                ;
+; Average fan-out                              ; 3.71                                                                                                                                                                                                                                                                                                  ;
 +----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -239,9 +239,9 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 ; SevenChannels:ApvProcessor_8_14|ChannelProcessor:Ch6|ApvReadout:ApvFrameDecoder|ApvDataFifo_4096x13_26:DataFifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_jkk1:auto_generated|altsyncram_fgu:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                           ; AUTO ; Simple Dual Port ; 4096         ; 13           ; 2048         ; 26           ; 53248  ; None                                ;
 ; TrigMeas:TriggerMeasurements|TdcFifo_1024x8:TrigTimeFifo|dcfifo:dcfifo_component|dcfifo_nse1:auto_generated|altsyncram_gdu:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                                                                                            ; AUTO ; Simple Dual Port ; 1024         ; 8            ; 1024         ; 8            ; 8192   ; None                                ;
 ; mpd_fiber_interface:AuroraInterface|aurora_8b10b_arria_gxb:aurora_8b10b_arria_gxb_inst|aurora_8b10b_v5_3:aurora_8b10b_v5_3_inst|aurora_8b10b_v5_3_GTX_WRAPPER:gtx_wrapper_i|gxb_clockcompensate:gxb_clockcompensate_inst|dcfifo:dcfifo_inst|dcfifo_66u1:auto_generated|altsyncram_kdu:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                 ; AUTO ; Simple Dual Port ; 32           ; 24           ; 32           ; 24           ; 768    ; None                                ;
-; mpd_fiber_interface:AuroraInterface|mpd_fiber_slave:mpd_fiber_slave_inst|mpd_fiber_reg_slave:mpd_fiber_reg_slave_inst|dcfifo:dcfifo_inst_ack|dcfifo_cp32:auto_generated|altsyncram_c901:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                               ; M4K  ; Simple Dual Port ; 16           ; 34           ; 16           ; 34           ; 544    ; None                                ;
-; mpd_fiber_interface:AuroraInterface|mpd_fiber_slave:mpd_fiber_slave_inst|mpd_fiber_reg_slave:mpd_fiber_reg_slave_inst|dcfifo:dcfifo_inst_cmd|dcfifo_kp32:auto_generated|altsyncram_l901:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                               ; M4K  ; Simple Dual Port ; 16           ; 65           ; 16           ; 65           ; 1040   ; None                                ;
-; mpd_fiber_interface:AuroraInterface|mpd_fiber_slave:mpd_fiber_slave_inst|mpd_fiber_tx_event:mpd_fiber_tx_event_inst|dcfifo:dcfifo_inst|dcfifo_0h42:auto_generated|altsyncram_g901:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                                     ; M4K  ; Simple Dual Port ; 128          ; 33           ; 128          ; 33           ; 4224   ; None                                ;
+; mpd_fiber_interface:AuroraInterface|mpd_fiber_slave:mpd_fiber_slave_inst|mpd_fiber_reg_slave:mpd_fiber_reg_slave_inst|dcfifo:dcfifo_inst_ack|dcfifo_pu32:auto_generated|altsyncram_pe01:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                               ; AUTO ; Simple Dual Port ; 16           ; 34           ; 16           ; 34           ; 544    ; None                                ;
+; mpd_fiber_interface:AuroraInterface|mpd_fiber_slave:mpd_fiber_slave_inst|mpd_fiber_reg_slave:mpd_fiber_reg_slave_inst|dcfifo:dcfifo_inst_cmd|dcfifo_1v32:auto_generated|altsyncram_1f01:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                               ; AUTO ; Simple Dual Port ; 16           ; 65           ; 16           ; 65           ; 1040   ; None                                ;
+; mpd_fiber_interface:AuroraInterface|mpd_fiber_slave:mpd_fiber_slave_inst|mpd_fiber_tx_event:mpd_fiber_tx_event_inst|dcfifo:dcfifo_inst|dcfifo_dm42:auto_generated|altsyncram_te01:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                                     ; AUTO ; Simple Dual Port ; 128          ; 33           ; 128          ; 33           ; 4224   ; None                                ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-------------------------------------+
 
 
@@ -276,14 +276,14 @@ Note: number of DSP Blocks used is only available after a successful fit.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Partition Merge
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1.78 SJ Full Version
-    Info: Processing started: Mon Mar 15 16:08:33 2021
+    Info: Processing started: Sat Apr  3 15:44:23 2021
 Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off Fpga -c Fpga --merge=on
 Info (35007): Using synthesis netlist for partition "Top"
 Info (35007): Using synthesis netlist for partition "AdcDeser:AdcDeser0"
 Info (35007): Using synthesis netlist for partition "AdcDeser:AdcDeser1"
 Info (35002): Resolved and merged 3 partition(s)
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 10 node(s), including 0 DDIO, 3 PLL, 2 transceiver and 0 LCELL
+    Info (16011): Adding 8 node(s), including 0 DDIO, 2 PLL, 2 transceiver and 0 LCELL
 Info (35047): Found 12 ports with no fan-out. For more information, refer to the Partition Merger report
 Warning (35016): Found partition port(s) not driving logic, possibly wasting area
     Warning (35018): Partition port "AdcDeser:AdcDeser1|ADC_PDATA7[0]", driven by node "AdcDeser:AdcDeser1|AdcOneDeser:Deser7|PDATA[0]", does not drive logic
@@ -298,10 +298,8 @@ Warning (35016): Found partition port(s) not driving logic, possibly wasting are
     Warning (35018): Partition port "AdcDeser:AdcDeser1|ADC_PDATA7[9]", driven by node "AdcDeser:AdcDeser1|AdcOneDeser:Deser7|PDATA[9]", does not drive logic
     Warning (35018): Partition port "AdcDeser:AdcDeser1|ADC_PDATA7[10]", driven by node "AdcDeser:AdcDeser1|AdcOneDeser:Deser7|PDATA[10]", does not drive logic
     Warning (35018): Partition port "AdcDeser:AdcDeser1|ADC_PDATA7[11]", driven by node "AdcDeser:AdcDeser1|AdcOneDeser:Deser7|PDATA[11]", does not drive logic
-Info (15667): Changed source nodes of Clock Control Block "CK40_MUX:Ck40Mux_Inst|CK40_MUX_altclkctrl_hfe:CK40_MUX_altclkctrl_hfe_component|clkctrl1" inclk[] ports to use legal port connections and adjusted corresponding clkselect[] port connections
-    Info (15668): Replaced inclk[0] input port, which is driven by node P0CK_Pll:P0Clk_Pll_Inst|altpll:altpll_component|_clk0, with inclk[2] port
-    Info (15668): Replaced inclk[1] input port, which is driven by node MASTER_CLOCK2, with inclk[0] port
-Warning (21074): Design contains 20 input pin(s) that do not drive logic
+Warning (21074): Design contains 22 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "MASTER_CLOCK2"
     Warning (15610): No output dependent on input pin "VME_GA[5]"
     Warning (15610): No output dependent on input pin "VME_IACKb"
     Warning (15610): No output dependent on input pin "VME_IACKINb"
@@ -318,23 +316,24 @@ Warning (21074): Design contains 20 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "MII_COL"
     Warning (15610): No output dependent on input pin "SD_DETECT"
     Warning (15610): No output dependent on input pin "SD_CD"
+    Warning (15610): No output dependent on input pin "SWITCH[0]"
     Warning (15610): No output dependent on input pin "SWITCH[2]"
     Warning (15610): No output dependent on input pin "SWITCH[3]"
     Warning (15610): No output dependent on input pin "STATBIT_A_IN"
     Warning (15610): No output dependent on input pin "STATBIT_B_IN"
-Info (21057): Implemented 27592 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 27799 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 75 input pins
     Info (21059): Implemented 86 output pins
     Info (21060): Implemented 125 bidirectional pins
-    Info (21061): Implemented 26367 logic cells
+    Info (21061): Implemented 26576 logic cells
     Info (21064): Implemented 687 RAM segments
-    Info (21065): Implemented 3 PLLs
+    Info (21065): Implemented 2 PLLs
     Info (21066): Implemented 1 delay-locked loops
     Info (21062): Implemented 240 DSP elements
-Info: Quartus II 64-Bit Partition Merge was successful. 0 errors, 34 warnings
-    Info: Peak virtual memory: 1082 megabytes
-    Info: Processing ended: Mon Mar 15 16:08:42 2021
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:08
+Info: Quartus II 64-Bit Partition Merge was successful. 0 errors, 36 warnings
+    Info: Peak virtual memory: 1071 megabytes
+    Info: Processing ended: Sat Apr  3 15:44:28 2021
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:06
 
 

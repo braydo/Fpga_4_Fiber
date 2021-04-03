@@ -23,8 +23,3 @@ PLLJITTER	NA
 PLLSPEmax	NA
 PLLSPEmin	NA
 
-PLL_Name	P0CK_Pll:P0Clk_Pll_Inst|altpll:altpll_component|pll
-PLLJITTER	116
-PLLSPEmax	1002
-PLLSPEmin	-217
-

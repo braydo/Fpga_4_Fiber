@@ -294,7 +294,7 @@ assign I2C_SCL = (scl_oeB == 0) ? 0 : 1'bz;
 
 
 assign internal_user_in[0] = ~IoConfig[0] ? USER_IN_TTL[0] : ~USER_IN_NIM[0];	// LVTTL default
-assign internal_user_in[1] = ~IoConfig[1] ? USER_IN_TTL[1] : ~USER_IN_NIM[1];	// LVTTL default
+assign internal_user_in[1] = ~IoConfig[1] ? USER_IN_TTL[1] : 1'b0;	//~USER_IN_NIM[1];	// LVTTL default (NIM disabled for user_in since it has switched to clock)
 
 assign SEL_OUT[0] = IoConfig[2];	// LVTTL default
 assign SEL_OUT[1] = IoConfig[3];	// LVTTL default
@@ -415,15 +415,15 @@ assign time_clock = sel_time_clk ? CLK_IN_P0 : APV_CLOCK;
 // A PLL is used to generate 40 MHz from CLK_IN_P0 
 // A MUX is implemented to choose between P0 generated and FrontPanel clock
 // A PLL is used to generate every neede clock, choosing between local oscillator and the output of the MUX
-P0CK_Pll P0Clk_Pll_Inst(
-	.inclk0(CLK_IN_P0),	// 62.5 MHz
-	.c0(ck_40MHz_from_Bkplane),	// 40 MHz
-	.locked(P0CkPll_Locked));
+//P0CK_Pll P0Clk_Pll_Inst(
+//	.inclk0(CLK_IN_P0),	// 62.5 MHz
+//	.c0(ck_40MHz_from_Bkplane),	// 40 MHz
+//	.locked(P0CkPll_Locked));
 
 assign pll_clock_switch0 = SWITCH[0];	// default = OPEN = OFF = 1
 assign pll_clock_switch1 = SWITCH[1];	// default = OPEN = OFF = 1
 /* pll_clock_switch1 pll_clock_switch2 Main clock source
- *       0 (ON)            0 (ON)          CLK_IN_P0 (40 MHz, PLL generated from 62.5 MHz)
+ *       0 (ON)            0 (ON)          CLK_IN_P0 (40 MHz, PLL generated from 62.5 MHz) *** Changed to front panel IN1 NIM
  *       0 (ON)            1 (OFF)         MASTER_CLOCK2 (40 MHz, front panel clock)
  *       1 (OFF)           0 (ON)          MASTER_CLOCK (40 MHz, local oscillator)
  *       1 (OFF) *         1 (OFF) *       MASTER_CLOCK (40 MHz, local oscillator)
@@ -431,15 +431,16 @@ assign pll_clock_switch1 = SWITCH[1];	// default = OPEN = OFF = 1
  * Switch default: *
  */
 // Connection for CK40_MUX are very crytical for P&R: do not modify them
-CK40_MUX Ck40Mux_Inst(
-	.clkselect(pll_clock_switch0),
-	.inclk0x(ck_40MHz_from_Bkplane),
-	.inclk1x(MASTER_CLOCK2),
-	.outclk(ck_40MHz_Main));
+//CK40_MUX Ck40Mux_Inst(
+//	.clkselect(pll_clock_switch0),
+//	.inclk0x(ck_40MHz_from_Bkplane),
+//	.inclk1x(MASTER_CLOCK2),
+//	.outclk(ck_40MHz_Main));
 
 GlobalPll ClockGenerator(
 	.clkswitch(pll_clock_switch1),
-	.inclk0(ck_40MHz_Main),
+	//.inclk0(ck_40MHz_Main),
+	.inclk0(USER_IN_NIM[1]),
 	.inclk1(MASTER_CLOCK),
 	.c0(ck_40MHz),
 	.c1(ck_10MHz),

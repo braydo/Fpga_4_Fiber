@@ -1,10 +1,10 @@
-Partition Merge Status : Successful - Mon Mar 15 16:08:41 2021
+Partition Merge Status : Successful - Sat Apr  3 15:44:27 2021
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1.78 SJ Full Version
 Revision Name : Fpga
 Top-level Entity Name : Fpga
 Family : Arria GX
 Logic utilization : N/A
-    Combinational ALUTs : 15,907
+    Combinational ALUTs : 16,096
     Dedicated logic registers : 17,420
 Total registers : 17596
 Total pins : 286
@@ -13,5 +13,5 @@ Total block memory bits : 1,673,708
 DSP block 9-bit elements : 240
 Total GXB Receiver Channels : 1
 Total GXB Transmitter Channels : 1
-Total PLLs : 3
+Total PLLs : 2
 Total DLLs : 1

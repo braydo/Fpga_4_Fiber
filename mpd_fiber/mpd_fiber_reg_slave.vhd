@@ -108,7 +108,7 @@ begin
 	dcfifo_inst_ack: dcfifo
 		generic map(
 			intended_device_family	=> "Arria GX",
-			lpm_hint						=> "MAXIMIZE_SPEED=5,RAM_BLOCK_TYPE=M4K",
+			lpm_hint						=> "MAXIMIZE_SPEED=5,RAM_BLOCK_TYPE=AUTO",
 			lpm_numwords				=> 16,
 			lpm_showahead				=> "ON",
 			lpm_type						=> "dcfifo",
@@ -138,7 +138,7 @@ begin
 	dcfifo_inst_cmd: dcfifo
 		generic map(
 			intended_device_family	=> "Arria GX",
-			lpm_hint						=> "MAXIMIZE_SPEED=5,RAM_BLOCK_TYPE=M4K",
+			lpm_hint						=> "MAXIMIZE_SPEED=5,RAM_BLOCK_TYPE=AUTO",
 			lpm_numwords				=> 16,
 			lpm_showahead				=> "ON",
 			lpm_type						=> "dcfifo",
